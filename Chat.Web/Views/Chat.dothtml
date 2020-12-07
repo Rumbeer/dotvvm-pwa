@@ -1,0 +1,65 @@
+﻿@viewModel Chat.Web.ViewModels.ChatViewModel, Chat.Web
+@masterPage Views/MasterPage.dotmaster
+
+@import ChatMessageDTO = Chat.Common.DTOs.ChatMessageDTO
+@import Collections = System.Collections.Generic
+@import ChatMemberType = Chat.Common.Enums.ChatMemberType
+<dot:Content ContentPlaceHolderID="MainContent">
+    <%--<pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set("messages", Messages)}"
+                        OfflinePageLoad="{staticCommand: Messages = _localStorage.Get<Collections.List<ChatMessageDTO>>("messages")}" />--%>
+    <pwa:OfflineAlert>
+        OFFLINE!
+    </pwa:OfflineAlert>
+    <dot:Repeater DataSource="{value: Messages}"
+                  class="message__container">
+        <ItemTemplate>
+            <span Class-message__text--received="{value: MessageType == ChatMemberType.Receiver}"
+                  Class-message__text--sent="{value: MessageType == ChatMemberType.Sender}">
+                {{value: Text}}
+            </span>
+        </ItemTemplate>
+    </dot:Repeater>
+    <div class="message__form">
+        <dot:TextBox class="message__form--input" Text="{value: NewMessageText}" placeholder="Napište zprávu..." />
+        <dot:Button class="message__form--button" Click="{command: AddNewMessage}" Text="Odeslat" />
+    </div>
+    <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set("text", TestText)}"
+                        OfflinePageLoad="{staticCommand: Text = _localStorage.Get<string>("text")}" />
+    {{value: TestText}}
+<div>
+    <dot:Button Click="{command: Change()}" Text="save text binding" />
+    <dot:Button Click="{staticCommand: TestText = "Changed"}" Text="save text binding" />
+    <dot:Button Click="{staticCommand: _localStorage.Set("text", TestText)}" Text="save text binding" />
+    <dot:Button Click="{staticCommand: _localStorage.Set("text", "test text")}" Text="save text" />
+    <dot:Button Click="{staticCommand: _localStorage.Set("number", TestNumber)}" Text="save number binding" />
+    <dot:Button Click="{staticCommand: _localStorage.Set("number", 1)}" Text="save number" />
+    <dot:Button Click="{staticCommand: _localStorage.Set<Model>("model", null)}" Text="save null" />
+    <dot:Button Click="{staticCommand: _localStorage.Set("model", TestModel)}" Text="save model binding" />
+    <dot:Button Click="{staticCommand: Text = _localStorage.Get<string>("text")}" Text="load text" />
+    <dot:Button Click="{staticCommand: Model = _localStorage.Get<Model>("model")}" Text="load model" />
+    <dot:Button Click="{staticCommand: Number = _localStorage.Get<int>("number")}" Text="load number" />
+</div>
+    <div>
+        Model:
+        <br>
+        {{value: Model.Text}}
+        <dot:Repeater DataSource="{value: Model.Texts}">
+            <ItemTemplate>
+                {{value: _this}}
+            </ItemTemplate>
+        </dot:Repeater>
+    </div>
+    <hr>
+    <div>
+        Text:
+        <br>
+        {{value: Text}}
+    </div>
+    <hr>
+    <div>
+        Number:
+        <br>
+        {{value: Number}}
+    </div>
+</dot:Content>
+

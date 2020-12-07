@@ -1,0 +1,45 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".js" #>
+
+
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
+
+const oneDayExpirationPlugin = new workbox.expiration.ExpirationPlugin({ maxAgeSeconds: 24 * 60 * 60 });
+const thirtyDaysExpirationPlugin = new workbox.expiration.ExpirationPlugin({ maxAgeSeconds: 24 * 60 * 60 * 30 });
+
+const strategyStaleWhileRevalidate = new workbox.strategies.StaleWhileRevalidate({
+    cacheName: 'test',
+    plugins: [oneDayExpirationPlugin]
+});
+
+workbox.routing.registerRoute(
+    ({ request }) => request.destination === 'image',
+    new workbox.strategies.CacheFirst({
+        cacheName: 'images-cache-first',
+        plugins: [new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [200] })]
+    }));
+workbox.routing.registerRoute(
+    ({ request }) => request.destination === 'style',
+    new workbox.strategies.StaleWhileRevalidate({
+        cacheName: 'styles'
+    }))
+workbox.routing.registerRoute(
+    ({ request }) => request.destination === 'script',
+    new workbox.strategies.StaleWhileRevalidate({
+        cacheName: 'scripts'
+    }))
+
+workbox.routing.registerRoute(/^https:\/\/fonts\.gstatic\.com/, strategyStaleWhileRevalidate);
+workbox.routing.registerRoute(/^https:\/\/fonts\.googleapis\.com/, strategyStaleWhileRevalidate);
+
+const networkOnlyStrategy = new workbox.strategies.NetworkOnly();
+
+<#foreach (var url in Model.RouteUrls){#>
+workbox.routing.registerRoute(/<#=url#>/i, strategyStaleWhileRevalidate);
+<#} #>
+
+<#+ public ServiceWorkerTemplateModel Model { get; set; } #>

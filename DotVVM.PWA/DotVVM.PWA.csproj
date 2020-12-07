@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Scripts\Controls\LocalStorage.js" />
+    <None Remove="Resources\Scripts\Controls\OfflineAlert.js" />
+    <None Remove="Resources\Scripts\Controls\OfflineHandler.js" />
+    <None Remove="Resources\Scripts\Controls\RegisterServiceWorker.js" />
+    <None Remove="Resources\Scripts\Controls\ServiceWorker.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Scripts\Controls\ServiceWorker.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Scripts\Controls\LocalStorage.js" />
+    <EmbeddedResource Include="Resources\Scripts\Controls\OfflineAlert.js" />
+    <EmbeddedResource Include="Resources\Scripts\Controls\OfflineHandler.js" />
+    <EmbeddedResource Include="Resources\Scripts\Controls\RegisterServiceWorker.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotVVM" Version="3.0.0-preview01-97429-alpha12" />
+    <PackageReference Include="System.CodeDom" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\Manifest\ManifestTemplate.tt">
+      <LastGenOutput>ManifestTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Templates\ServiceWorker\ServiceWorkerTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ServiceWorkerTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Templates\Manifest\ManifestTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ManifestTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\ServiceWorker\ServiceWorkerTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ServiceWorkerTemplate.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

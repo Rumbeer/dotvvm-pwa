@@ -1,0 +1,27 @@
+﻿@viewModel Chat.Web.ViewModels.DashboardViewModel, Chat.Web
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <dot:Repeater DataSource="{value: Contacts}">
+        <ItemTemplate>
+            <dot:RouteLink class="contact__link"
+                           RouteName="Chat" 
+                           Param-UserId="{value: UserId}">
+                <div class="contact__container">
+                    <img class="contact__content--image" src='https://placehold.it/80x80' />
+                    <span class="contact__content--title">
+                        {{value: FirstName}}
+                        {{value: LastNameName}}
+                    </span>
+                    <span class="contact__content--desc">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus et lorem id felis
+                    </span>
+                    <span class="contact__content--date">
+                        25.5.19
+                    </span>
+                </div>
+            </dot:RouteLink>
+        </ItemTemplate>
+    </dot:Repeater>
+</dot:Content>
+
