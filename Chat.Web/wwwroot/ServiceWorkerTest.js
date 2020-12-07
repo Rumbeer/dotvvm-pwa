@@ -1,6 +1,6 @@
-﻿function onRegisterRoute(route) {
+﻿importScripts("/ServiceWorkerConfiguration.js");
 
-}
-
-
-importScripts("/ServiceWorker.js");
+serviceWorkerConfiguration.registerImages();
+serviceWorkerConfiguration.registerStyles();
+serviceWorkerConfiguration.registerScripts();
+serviceWorkerConfiguration.registerRoutes();

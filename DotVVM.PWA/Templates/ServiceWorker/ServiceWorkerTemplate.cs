@@ -28,52 +28,57 @@ namespace DotVVM.PWA.Templates.ServiceWorker
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n\r\nimportScripts(\'https://storage.googleapis.com/workbox-cdn/releases/5.1.2/work" +
-                    "box-sw.js\');\r\n\r\nconst oneDayExpirationPlugin = new workbox.expiration.Expiration" +
-                    "Plugin({ maxAgeSeconds: 24 * 60 * 60 });\r\nconst thirtyDaysExpirationPlugin = new" +
-                    " workbox.expiration.ExpirationPlugin({ maxAgeSeconds: 24 * 60 * 60 * 30 });\r\n\r\nc" +
-                    "onst strategyStaleWhileRevalidate = new workbox.strategies.StaleWhileRevalidate(" +
-                    "{\r\n    cacheName: \'test\',\r\n    plugins: [oneDayExpirationPlugin]\r\n});\r\n\r\nworkbox" +
-                    ".routing.registerRoute(\r\n    ({ request }) => request.destination === \'image\',\r\n" +
-                    "    new workbox.strategies.CacheFirst({\r\n        cacheName: \'images-cache-first\'" +
-                    ",\r\n        plugins: [new workbox.cacheableResponse.CacheableResponsePlugin({ sta" +
-                    "tuses: [200] })]\r\n    }));\r\nworkbox.routing.registerRoute(\r\n    ({ request }) =>" +
-                    " request.destination === \'image\',\r\n    new workbox.strategies.StaleWhileRevalida" +
-                    "te({\r\n        cacheName: \'images-stale-while-revalidate\',\r\n        plugins: [new" +
-                    " workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [0] })]\r\n    }));" +
-                    "\r\nworkbox.routing.registerRoute(\r\n    ({ request }) => request.destination === \'" +
-                    "style\',\r\n    new workbox.strategies.StaleWhileRevalidate({\r\n        cacheName: \'" +
-                    "styles\'\r\n    }))\r\nworkbox.routing.registerRoute(\r\n    ({ request }) => request.d" +
-                    "estination === \'script\',\r\n    new workbox.strategies.StaleWhileRevalidate({\r\n   " +
-                    "     cacheName: \'scripts\'\r\n    }))\r\n\r\nworkbox.routing.registerRoute(/^https:\\/\\/" +
-                    "fonts\\.gstatic\\.com/, strategyStaleWhileRevalidate);\r\nworkbox.routing.registerRo" +
-                    "ute(/^https:\\/\\/fonts\\.googleapis\\.com/, strategyStaleWhileRevalidate);\r\n\r\nconst" +
-                    " networkOnlyStrategy = new workbox.strategies.NetworkOnly();\r\n\r\n");
+            this.Write("\r\nimportScripts(\'https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbo" +
+                    "x-sw.js\');\r\n\r\nserviceWorkerConfiguration = (function() {\r\n    const oneDayExpira" +
+                    "tionPlugin = new workbox.expiration.ExpirationPlugin({ maxAgeSeconds: 24 * 60 * " +
+                    "60 });\r\n    const thirtyDaysExpirationPlugin = new workbox.expiration.Expiration" +
+                    "Plugin({ maxAgeSeconds: 24 * 60 * 60 * 30 });\r\n    \r\n    const strategyStaleWhil" +
+                    "eRevalidate = new workbox.strategies.StaleWhileRevalidate({\r\n        cacheName: " +
+                    "\'test\',\r\n        plugins: [oneDayExpirationPlugin]\r\n    });\r\n    const networkOn" +
+                    "lyStrategy = new workbox.strategies.NetworkFirst();\r\n\r\n    function registerImag" +
+                    "es(){\r\n        console.log(\"registering images\");\r\n        workbox.routing.regis" +
+                    "terRoute(\r\n            ({ request }) => request.destination === \'image\',\r\n      " +
+                    "      new workbox.strategies.CacheFirst({\r\n                cacheName: \'images-ca" +
+                    "che-first\',\r\n                plugins: [new workbox.cacheableResponse.CacheableRe" +
+                    "sponsePlugin({ statuses: [200] })]\r\n            }));\r\n    }\r\n    function regist" +
+                    "erStyles(){\r\n        console.log(\"registering images\");\r\n        workbox.routing" +
+                    ".registerRoute(\r\n            ({ request }) => request.destination === \'style\',\r\n" +
+                    "            new workbox.strategies.StaleWhileRevalidate({\r\n                cache" +
+                    "Name: \'styles\'\r\n            }))\r\n    }\r\n    \r\n    workbox.routing.registerRoute(" +
+                    "/^https:\\/\\/fonts\\.gstatic\\.com/, strategyStaleWhileRevalidate);\r\n    workbox.ro" +
+                    "uting.registerRoute(/^https:\\/\\/fonts\\.googleapis\\.com/, strategyStaleWhileReval" +
+                    "idate);\r\n    \r\n    function registerScripts(){\r\n        console.log(\"registering" +
+                    " images\");\r\n        workbox.routing.registerRoute(\r\n            ({ request }) =>" +
+                    " request.destination === \'script\',\r\n            new workbox.strategies.NetworkFi" +
+                    "rst({\r\n                cacheName: \'scripts\'\r\n            }))\r\n    }\r\n    \r\n\r\n   " +
+                    " \r\n    function registerRoutes(){\r\n        console.log(\"registering images\");\r\n");
             
-            #line 47 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+            #line 54 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
 foreach (var url in Model.RouteUrls){
             
             #line default
             #line hidden
-            this.Write("workbox.routing.registerRoute(/");
+            this.Write("        workbox.routing.registerRoute(/");
             
-            #line 48 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+            #line 55 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(url));
             
             #line default
             #line hidden
-            this.Write("/i, strategyStaleWhileRevalidate);\r\n");
+            this.Write("/i, networkOnlyStrategy);\r\n");
             
-            #line 49 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+            #line 56 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
 } 
             
             #line default
             #line hidden
-            this.Write("\r\n");
+            this.Write("    }\r\n\r\n    return {\r\n        registerImages: registerImages,\r\n        registerS" +
+                    "tyles: registerStyles,\r\n        registerScripts: registerScripts,\r\n        regis" +
+                    "terRoutes: registerRoutes\r\n    }\r\n\r\n})();\r\n\r\n\r\n\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 51 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 71 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
  public ServiceWorkerTemplateModel Model { get; set; } 
         
         #line default

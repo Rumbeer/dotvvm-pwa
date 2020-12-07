@@ -29,7 +29,7 @@ namespace DotVVM.PWA
 
         private static void ConfigureControls(this DotvvmConfiguration config)
         {
-            config.RouteTable.Add("ServiceWorker", "ServiceWorker.js", typeof(ServiceWorkerPresenter));
+            config.RouteTable.Add("ServiceWorker", "ServiceWorkerConfiguration.js", typeof(ServiceWorkerPresenter));
             config.RouteTable.Add("Manifest", "Manifest.json", typeof(ManifestPresenter));
             // register code-only controls and markup controls
             config.Markup.AddCodeControls("pwa", typeof(RegisterServiceWorker));

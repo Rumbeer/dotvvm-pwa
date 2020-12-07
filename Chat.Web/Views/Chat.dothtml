@@ -7,9 +7,6 @@
 <dot:Content ContentPlaceHolderID="MainContent">
     <%--<pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set("messages", Messages)}"
                         OfflinePageLoad="{staticCommand: Messages = _localStorage.Get<Collections.List<ChatMessageDTO>>("messages")}" />--%>
-    <pwa:OfflineAlert>
-        OFFLINE!
-    </pwa:OfflineAlert>
     <dot:Repeater DataSource="{value: Messages}"
                   class="message__container">
         <ItemTemplate>

@@ -5,41 +5,67 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".js" #>
 
-
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
-const oneDayExpirationPlugin = new workbox.expiration.ExpirationPlugin({ maxAgeSeconds: 24 * 60 * 60 });
-const thirtyDaysExpirationPlugin = new workbox.expiration.ExpirationPlugin({ maxAgeSeconds: 24 * 60 * 60 * 30 });
+serviceWorkerConfiguration = (function() {
+    const oneDayExpirationPlugin = new workbox.expiration.ExpirationPlugin({ maxAgeSeconds: 24 * 60 * 60 });
+    const thirtyDaysExpirationPlugin = new workbox.expiration.ExpirationPlugin({ maxAgeSeconds: 24 * 60 * 60 * 30 });
+    
+    const strategyStaleWhileRevalidate = new workbox.strategies.StaleWhileRevalidate({
+        cacheName: 'test',
+        plugins: [oneDayExpirationPlugin]
+    });
+    const networkOnlyStrategy = new workbox.strategies.NetworkFirst();
 
-const strategyStaleWhileRevalidate = new workbox.strategies.StaleWhileRevalidate({
-    cacheName: 'test',
-    plugins: [oneDayExpirationPlugin]
-});
+    function registerImages(){
+        console.log("registering images");
+        workbox.routing.registerRoute(
+            ({ request }) => request.destination === 'image',
+            new workbox.strategies.CacheFirst({
+                cacheName: 'images-cache-first',
+                plugins: [new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [200] })]
+            }));
+    }
+    function registerStyles(){
+        console.log("registering images");
+        workbox.routing.registerRoute(
+            ({ request }) => request.destination === 'style',
+            new workbox.strategies.StaleWhileRevalidate({
+                cacheName: 'styles'
+            }))
+    }
+    
+    workbox.routing.registerRoute(/^https:\/\/fonts\.gstatic\.com/, strategyStaleWhileRevalidate);
+    workbox.routing.registerRoute(/^https:\/\/fonts\.googleapis\.com/, strategyStaleWhileRevalidate);
+    
+    function registerScripts(){
+        console.log("registering images");
+        workbox.routing.registerRoute(
+            ({ request }) => request.destination === 'script',
+            new workbox.strategies.NetworkFirst({
+                cacheName: 'scripts'
+            }))
+    }
+    
 
-workbox.routing.registerRoute(
-    ({ request }) => request.destination === 'image',
-    new workbox.strategies.CacheFirst({
-        cacheName: 'images-cache-first',
-        plugins: [new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [200] })]
-    }));
-workbox.routing.registerRoute(
-    ({ request }) => request.destination === 'style',
-    new workbox.strategies.StaleWhileRevalidate({
-        cacheName: 'styles'
-    }))
-workbox.routing.registerRoute(
-    ({ request }) => request.destination === 'script',
-    new workbox.strategies.StaleWhileRevalidate({
-        cacheName: 'scripts'
-    }))
-
-workbox.routing.registerRoute(/^https:\/\/fonts\.gstatic\.com/, strategyStaleWhileRevalidate);
-workbox.routing.registerRoute(/^https:\/\/fonts\.googleapis\.com/, strategyStaleWhileRevalidate);
-
-const networkOnlyStrategy = new workbox.strategies.NetworkOnly();
-
+    
+    function registerRoutes(){
+        console.log("registering images");
 <#foreach (var url in Model.RouteUrls){#>
-workbox.routing.registerRoute(/<#=url#>/i, strategyStaleWhileRevalidate);
+        workbox.routing.registerRoute(/<#=url#>/i, networkOnlyStrategy);
 <#} #>
+    }
+
+    return {
+        registerImages: registerImages,
+        registerStyles: registerStyles,
+        registerScripts: registerScripts,
+        registerRoutes: registerRoutes
+    }
+
+})();
+
+
+
 
 <#+ public ServiceWorkerTemplateModel Model { get; set; } #>
