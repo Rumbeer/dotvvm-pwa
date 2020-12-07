@@ -1,10 +1,11 @@
-﻿registerServiceWorker();
-
-function registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            console.log('Registering service worker');
-            navigator.serviceWorker.register('/ServiceWorkerTest.js', { scope: '/' });
-        });
+﻿ko.bindingHandlers["dotvvm-pwa-registerServiceWorker"] = {
+    init: function (element, valueAccessor) {
+        const binding = valueAccessor();
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                console.log('Registering service worker');
+                navigator.serviceWorker.register(binding.swPath, { scope: binding.scope });
+            });
+        }
     }
 }

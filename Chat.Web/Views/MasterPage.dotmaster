@@ -35,6 +35,6 @@
 	<dot:ContentPlaceHolder ID="MainContent" />
 
 	<dot:RequiredResource Name="local-storage" />
-	<pwa:RegisterServiceWorker />
+	<pwa:RegisterServiceWorker ServiceWorkerPath="/ServiceWorkerTest.js" />
 </body>
 </html>

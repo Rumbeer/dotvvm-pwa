@@ -48,7 +48,8 @@ namespace DotVVM.PWA
                         typeof(PwaInstaller).GetTypeInfo().Assembly,
                         "DotVVM.PWA.Resources.Scripts.Controls.RegisterServiceWorker.js"))
                 {
-                    RenderPosition = ResourceRenderPosition.Body
+                    RenderPosition = ResourceRenderPosition.Body,
+                    Dependencies = new[] { "dotvvm", "knockout" }
                 });
             config.Resources.Register("offline-handler",
                 new ScriptResource(
