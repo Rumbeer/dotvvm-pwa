@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotVVM" Version="3.0.0-preview01-97429-alpha12" />
+    <PackageReference Include="DotVVM" Version="2.5.0" />
     <PackageReference Include="System.CodeDom" Version="4.7.0" />
   </ItemGroup>
 
