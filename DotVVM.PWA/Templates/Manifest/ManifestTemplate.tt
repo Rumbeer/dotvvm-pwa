@@ -4,6 +4,8 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".json" #>
+<#@ import namespace="DotVVM.PWA.Options.Manifest" #>
+<#@ import namespace="DotVVM.PWA.Extensions" #>
 
 {
 <#if(!string.IsNullOrWhiteSpace(Options.Name)) {#>

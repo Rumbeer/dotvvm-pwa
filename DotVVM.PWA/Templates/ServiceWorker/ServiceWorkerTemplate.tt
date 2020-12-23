@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".js" #>
+<#@ import namespace="DotVVM.PWA.Options.ServiceWorker" #>
 
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
@@ -19,41 +20,43 @@ serviceWorkerConfiguration = (function() {
 
     function registerImages(){
         console.log("registering images");
+<# 
+    var imageCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Scripts);
+    GenerateStrategy(imageCachingStrategy); 
+#> 
         workbox.routing.registerRoute(
-            ({ request }) => request.destination === 'image',
-            new workbox.strategies.CacheFirst({
-                cacheName: 'images-cache-first',
-                plugins: [new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [200] })]
-            }));
+            ({ request }) => request.destination === 'image', cachingStrategy);
     }
-    function registerStyles(){
-        console.log("registering images");
-        workbox.routing.registerRoute(
-            ({ request }) => request.destination === 'style',
-            new workbox.strategies.StaleWhileRevalidate({
-                cacheName: 'styles'
-            }))
-    }
-    
-    workbox.routing.registerRoute(/^https:\/\/fonts\.gstatic\.com/, strategyStaleWhileRevalidate);
-    workbox.routing.registerRoute(/^https:\/\/fonts\.googleapis\.com/, strategyStaleWhileRevalidate);
-    
-    function registerScripts(){
-        console.log("registering images");
-        workbox.routing.registerRoute(
-            ({ request }) => request.destination === 'script',
-            new workbox.strategies.NetworkFirst({
-                cacheName: 'scripts'
-            }))
-    }
-    
 
+    function registerStyles(){
+        console.log("registering styles");
+<# 
+    var styleCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Scripts);
+    GenerateStrategy(styleCachingStrategy); 
+#> 
+        workbox.routing.registerRoute(
+            ({ request }) => request.destination === 'style', cachingStrategy);
+    }
+
+    function registerScripts(){
+        console.log("registering scripts");
+<# 
+    var scriptCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Scripts);
+    GenerateStrategy(scriptCachingStrategy); 
+#> 
+        workbox.routing.registerRoute(
+            ({ request }) => request.destination === 'script', cachingStrategy);
+    }
     
     function registerRoutes(){
-        console.log("registering images");
-<#foreach (var url in Model.RouteUrls){#>
-        workbox.routing.registerRoute(/<#=url#>/i, networkOnlyStrategy);
-<#} #>
+        console.log("registering routes");
+<#
+    foreach (var url in Model.RouteUrls)
+    {
+#>
+        workbox.routing.registerRoute(/<#=url.RouteUrlRegex #>/i, networkOnlyStrategy);
+<#
+    } #>
     }
 
     return {
@@ -65,7 +68,103 @@ serviceWorkerConfiguration = (function() {
 
 })();
 
+<#+
+    public ServiceWorkerTemplateModel Model { get; set; }
+#>
+
+<#+
+    protected void GenerateStrategy(CachingStrategy cachingStrategy)
+    {
+        switch (cachingStrategy?.StrategyType)
+        {
+            case StrategyType.CacheFirst:
+#>
+        let cachingStrategy = new workbox.strategies.CacheFirst({
+<#+
+            GenerateCacheName(cachingStrategy);
+            GeneratePlugins(cachingStrategy);
+#>
+        });
+<#+
+                break;
+            case StrategyType.StaleWhileRevalidate:
+#>
+        let cachingStrategy = new workbox.strategies.StaleWhileRevalidate({
+<#+
+            GenerateCacheName(cachingStrategy);
+            GeneratePlugins(cachingStrategy);
+#>
+        });
+<#+
+                break;
+            case StrategyType.NetworkFirst:
+#>
+        let cachingStrategy = new workbox.strategies.NetworkFirst({
+<#+
+            GenerateCacheName(cachingStrategy);
+            GeneratePlugins(cachingStrategy);
+#>
+        }
+<#+
+                break;
+            default:
+#>
+        let cachingStrategy = new workbox.strategies.NetworkFirst({
+<#+
+            GeneratePlugins(cachingStrategy);
+#>
+        }
+<#+
+                break;
+        }
+    }
+#>
 
 
+<#+
+    protected void GenerateCacheName(CachingStrategy cachingStrategy)
+    {
+        if (!string.IsNullOrWhiteSpace(cachingStrategy.CacheName))
+        {
+#>
+            cacheName: '<#= cachingStrategy.CacheName #>',
+<#+
+        }
+    }
+#>
 
-<#+ public ServiceWorkerTemplateModel Model { get; set; } #>
+<#+
+    protected void GeneratePlugins(CachingStrategy cachingStrategy)
+    {
+        if (cachingStrategy.ExpirationPlugin != null && (cachingStrategy.ExpirationPlugin.MaxAgeSeconds > 0 || cachingStrategy.ExpirationPlugin.MaxEntries > 0))
+        {
+#>
+            plugins: [
+                new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [200] }), 
+                new workbox.expiration.ExpirationPlugin({ 
+<#+
+            if (cachingStrategy.ExpirationPlugin.MaxAgeSeconds > 0)
+            {
+#>
+                    maxAgeSeconds: <#= cachingStrategy.ExpirationPlugin.MaxAgeSeconds#>, 
+<#+
+            }
+            if (cachingStrategy.ExpirationPlugin.MaxEntries > 0)
+            {
+#>
+                    maxEntries: <#= cachingStrategy.ExpirationPlugin.MaxEntries#> 
+<#+
+            }
+#>
+                })
+            ]
+<#+
+        }
+        else
+        {
+#>
+            plugins: [new workbox.cacheableResponse.CacheableResponsePlugin({ statuses: [200] })]
+<#+
+        }
+    }
+#>

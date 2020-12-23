@@ -1,9 +1,12 @@
-﻿using Chat.DAL;
+﻿using System.Collections.Generic;
+using Chat.DAL;
 using Chat.DAL.Entities;
 using Chat.DAL.Repositories;
 using Chat.Web.Services;
 using DotVVM.Framework.Routing;
 using DotVVM.PWA;
+using DotVVM.PWA.Options.Manifest;
+using DotVVM.PWA.Options.ServiceWorker;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -65,7 +68,30 @@ namespace Chat.Web
                     options.LoginPath = "/Authentication/SignIn";
                 });
 
-            services.AddPwa(manifestOptions =>
+            services.AddPwaServiceWorker(swOptions =>
+            {
+                swOptions.CacheStrategies = new List<CachingStrategy>()
+                {
+                    new CachingStrategy()
+                    {
+                        CacheName = "custom-images",
+                        ContentType = ContentType.Images,
+                        StrategyType = StrategyType.CacheFirst,
+                        ExpirationPlugin = new ExpirationPlugin()
+                        {
+                            MaxAgeSeconds = 60*60*24*30
+                        }
+                    },
+                    new CachingStrategy()
+                    {
+                        CacheName = "custom-scripts",
+                        ContentType = ContentType.Scripts,
+                        StrategyType = StrategyType.StaleWhileRevalidate
+                    }
+                };
+            });
+
+            services.AddPwaManifest(manifestOptions =>
             {
                 manifestOptions.Name = "Chat Generated";
                 manifestOptions.ShortName = "Chat";

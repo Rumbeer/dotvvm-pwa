@@ -3,6 +3,8 @@ using System.Reflection;
 using DotVVM.Framework.Configuration;
 using DotVVM.Framework.ResourceManagement;
 using DotVVM.PWA.Controls;
+using DotVVM.PWA.Options.Manifest;
+using DotVVM.PWA.Options.ServiceWorker;
 using DotVVM.PWA.Presenters;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,17 +18,22 @@ namespace DotVVM.PWA
             config.ConfigureResources();
         }
 
-        public static IServiceCollection AddPwa(this IServiceCollection services, Action<ManifestOptions> setupManifest)
+        public static IServiceCollection AddPwaManifest(this IServiceCollection services, Action<ManifestOptions> setupManifest)
         {
             services.Configure(setupManifest);
-            var a = DisplayMode.Browser;
-            a.ToManifestValue();
-            services.AddTransient<ServiceWorkerPresenter>();
             services.AddTransient<ManifestPresenter>();
 
             return services;
         }
 
+        public static IServiceCollection AddPwaServiceWorker(this IServiceCollection services, Action<ServiceWorkerOptions> setupServiceWorker)
+        {
+            services.Configure(setupServiceWorker);
+            services.AddTransient<ServiceWorkerPresenter>();
+
+            return services;
+        }
+        
         private static void ConfigureControls(this DotvvmConfiguration config)
         {
             config.RouteTable.Add("ServiceWorker", "ServiceWorkerConfiguration.js", typeof(ServiceWorkerPresenter));

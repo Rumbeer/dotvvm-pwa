@@ -3,6 +3,8 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using DotVVM.Framework.Hosting;
+using DotVVM.PWA.Extensions;
+using DotVVM.PWA.Options.Manifest;
 using DotVVM.PWA.Templates.Manifest;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
