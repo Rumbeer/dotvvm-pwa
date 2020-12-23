@@ -79,7 +79,7 @@ namespace DotVVM.PWA.Presenters
                     StrategyType = StrategyType.CacheFirst
                 });
             }
-            if (cachingStrategies.All(cs => cs.ContentType != ContentType.DotvvmRoute && !string.IsNullOrWhiteSpace(cs.RouteName)))
+            if (!cachingStrategies.Any(cs => cs.ContentType == ContentType.DotvvmRoute && string.IsNullOrWhiteSpace(cs.RouteName)))
             {
                 cachingStrategies.Add(new CachingStrategy()
                 {
