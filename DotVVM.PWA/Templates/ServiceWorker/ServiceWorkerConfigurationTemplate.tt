@@ -63,7 +63,7 @@ serviceWorkerConfiguration = (function() {
 })();
 
 <#+
-    public ServiceWorkerTemplateModel Model { get; set; }
+    public ServiceWorkerConfigurationTemplateModel Model { get; set; }
 #>
 
 <#+

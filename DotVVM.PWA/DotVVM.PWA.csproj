@@ -40,9 +40,9 @@
       <LastGenOutput>ManifestTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
     </None>
-    <None Update="Templates\ServiceWorker\ServiceWorkerTemplate.tt">
+    <None Update="Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ServiceWorkerTemplate.cs</LastGenOutput>
+      <LastGenOutput>ServiceWorkerConfigurationTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
@@ -52,10 +52,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ManifestTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Update="Templates\ServiceWorker\ServiceWorkerTemplate.cs">
+    <Compile Update="Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ServiceWorkerTemplate.tt</DependentUpon>
+      <DependentUpon>ServiceWorkerConfigurationTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

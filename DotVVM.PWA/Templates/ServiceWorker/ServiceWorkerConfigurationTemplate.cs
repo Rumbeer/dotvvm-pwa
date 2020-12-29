@@ -19,9 +19,9 @@ namespace DotVVM.PWA.Templates.ServiceWorker
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+    #line 1 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class ServiceWorkerTemplate : ServiceWorkerTemplateBase
+    public partial class ServiceWorkerConfigurationTemplate : ServiceWorkerConfigurationTemplateBase
     {
 #line hidden
         /// <summary>
@@ -29,12 +29,11 @@ namespace DotVVM.PWA.Templates.ServiceWorker
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
             this.Write("\r\nimportScripts(\'https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbo" +
                     "x-sw.js\');\r\n\r\nserviceWorkerConfiguration = (function() {\r\n    function registerI" +
                     "mages(){\r\n        console.log(\"registering images\");\r\n");
             
-            #line 13 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+            #line 14 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
  
     var imageCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Scripts);
     GenerateStrategy(imageCachingStrategy, true); 
@@ -46,7 +45,7 @@ namespace DotVVM.PWA.Templates.ServiceWorker
                     "estination === \'image\', cachingStrategy);\r\n    }\r\n\r\n    function registerStyles(" +
                     "){\r\n        console.log(\"registering styles\");\r\n");
             
-            #line 23 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+            #line 24 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
  
     var styleCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Scripts);
     GenerateStrategy(styleCachingStrategy, true); 
@@ -58,7 +57,7 @@ namespace DotVVM.PWA.Templates.ServiceWorker
                     "estination === \'style\', cachingStrategy);\r\n    }\r\n\r\n    function registerScripts" +
                     "(){\r\n        console.log(\"registering scripts\");\r\n");
             
-            #line 33 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+            #line 34 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
  
     var scriptCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Scripts);
     GenerateStrategy(scriptCachingStrategy, true); 
@@ -71,7 +70,7 @@ namespace DotVVM.PWA.Templates.ServiceWorker
                     "utes(){\r\n        console.log(\"registering routes\");\r\n        let cachingStrategy" +
                     ";\r\n");
             
-            #line 44 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+            #line 45 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
     foreach (var routeRegex in Model.RouteUrls)
     {
@@ -82,14 +81,14 @@ namespace DotVVM.PWA.Templates.ServiceWorker
             #line hidden
             this.Write("        workbox.routing.registerRoute(/");
             
-            #line 49 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+            #line 50 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(routeRegex.RouteUrlRegex));
             
             #line default
             #line hidden
             this.Write("/i, cachingStrategy);\r\n");
             
-            #line 50 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+            #line 51 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
     } 
 
@@ -102,15 +101,15 @@ namespace DotVVM.PWA.Templates.ServiceWorker
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 64 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 65 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
-    public ServiceWorkerTemplateModel Model { get; set; }
+    public ServiceWorkerConfigurationTemplateModel Model { get; set; }
 
         
         #line default
         #line hidden
         
-        #line 68 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 69 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
     protected void GenerateStrategy(CachingStrategy cachingStrategy, bool initVariable)
     {
@@ -122,28 +121,28 @@ namespace DotVVM.PWA.Templates.ServiceWorker
         #line default
         #line hidden
         
-        #line 74 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 75 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("        ");
 
         
         #line default
         #line hidden
         
-        #line 75 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 76 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(initVariable ? "let " : ""));
 
         
         #line default
         #line hidden
         
-        #line 75 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 76 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("cachingStrategy = new workbox.strategies.CacheFirst({\r\n");
 
         
         #line default
         #line hidden
         
-        #line 76 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 77 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
             GenerateCacheName(cachingStrategy);
             GeneratePlugins(cachingStrategy);
@@ -152,14 +151,14 @@ this.Write("cachingStrategy = new workbox.strategies.CacheFirst({\r\n");
         #line default
         #line hidden
         
-        #line 79 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 80 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("        });\r\n");
 
         
         #line default
         #line hidden
         
-        #line 81 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 82 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
                 break;
             case StrategyType.StaleWhileRevalidate:
@@ -168,28 +167,28 @@ this.Write("        });\r\n");
         #line default
         #line hidden
         
-        #line 84 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 85 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("        ");
 
         
         #line default
         #line hidden
         
-        #line 85 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 86 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(initVariable ? "let " : ""));
 
         
         #line default
         #line hidden
         
-        #line 85 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 86 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("cachingStrategy = new workbox.strategies.StaleWhileRevalidate({\r\n");
 
         
         #line default
         #line hidden
         
-        #line 86 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 87 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
             GenerateCacheName(cachingStrategy);
             GeneratePlugins(cachingStrategy);
@@ -198,14 +197,14 @@ this.Write("cachingStrategy = new workbox.strategies.StaleWhileRevalidate({\r\n"
         #line default
         #line hidden
         
-        #line 89 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 90 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("        });\r\n");
 
         
         #line default
         #line hidden
         
-        #line 91 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 92 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
                 break;
             case StrategyType.NetworkFirst:
@@ -214,28 +213,28 @@ this.Write("        });\r\n");
         #line default
         #line hidden
         
-        #line 94 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 95 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("        ");
 
         
         #line default
         #line hidden
         
-        #line 95 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 96 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(initVariable ? "let " : ""));
 
         
         #line default
         #line hidden
         
-        #line 95 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 96 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("cachingStrategy = new workbox.strategies.NetworkFirst({\r\n");
 
         
         #line default
         #line hidden
         
-        #line 96 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 97 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
             GenerateCacheName(cachingStrategy);
             GeneratePlugins(cachingStrategy);
@@ -244,14 +243,14 @@ this.Write("cachingStrategy = new workbox.strategies.NetworkFirst({\r\n");
         #line default
         #line hidden
         
-        #line 99 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 100 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("        });\r\n");
 
         
         #line default
         #line hidden
         
-        #line 101 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 102 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
                 break;
             default:
@@ -260,28 +259,28 @@ this.Write("        });\r\n");
         #line default
         #line hidden
         
-        #line 104 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 105 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("        ");
 
         
         #line default
         #line hidden
         
-        #line 105 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 106 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(initVariable ? "let " : ""));
 
         
         #line default
         #line hidden
         
-        #line 105 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 106 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("cachingStrategy = new workbox.strategies.NetworkFirst({\r\n");
 
         
         #line default
         #line hidden
         
-        #line 106 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 107 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
             GeneratePlugins(cachingStrategy);
 
@@ -289,14 +288,14 @@ this.Write("cachingStrategy = new workbox.strategies.NetworkFirst({\r\n");
         #line default
         #line hidden
         
-        #line 108 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 109 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("       });\r\n");
 
         
         #line default
         #line hidden
         
-        #line 110 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 111 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
                 break;
         }
@@ -306,7 +305,7 @@ this.Write("       });\r\n");
         #line default
         #line hidden
         
-        #line 117 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 118 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
     protected void GenerateCacheName(CachingStrategy cachingStrategy)
     {
@@ -317,28 +316,28 @@ this.Write("       });\r\n");
         #line default
         #line hidden
         
-        #line 122 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 123 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("            cacheName: \'");
 
         
         #line default
         #line hidden
         
-        #line 123 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 124 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(cachingStrategy.CacheName));
 
         
         #line default
         #line hidden
         
-        #line 123 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 124 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("\',\r\n");
 
         
         #line default
         #line hidden
         
-        #line 124 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 125 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
         }
     }
@@ -347,7 +346,7 @@ this.Write("\',\r\n");
         #line default
         #line hidden
         
-        #line 129 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 130 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
     protected void GeneratePlugins(CachingStrategy cachingStrategy)
     {
@@ -358,7 +357,7 @@ this.Write("\',\r\n");
         #line default
         #line hidden
         
-        #line 134 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 135 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("            plugins: [\r\n                new workbox.cacheableResponse.CacheableRe" +
         "sponsePlugin({ statuses: [200] }), \r\n                new workbox.expiration.Expi" +
         "rationPlugin({ \r\n");
@@ -367,7 +366,7 @@ this.Write("            plugins: [\r\n                new workbox.cacheableRespo
         #line default
         #line hidden
         
-        #line 138 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 139 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
             if (cachingStrategy.ExpirationPlugin.MaxAgeSeconds > 0)
             {
@@ -376,28 +375,28 @@ this.Write("            plugins: [\r\n                new workbox.cacheableRespo
         #line default
         #line hidden
         
-        #line 141 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 142 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("                    maxAgeSeconds: ");
 
         
         #line default
         #line hidden
         
-        #line 142 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 143 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(cachingStrategy.ExpirationPlugin.MaxAgeSeconds));
 
         
         #line default
         #line hidden
         
-        #line 142 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 143 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write(", \r\n");
 
         
         #line default
         #line hidden
         
-        #line 143 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 144 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
             }
             if (cachingStrategy.ExpirationPlugin.MaxEntries > 0)
@@ -407,28 +406,28 @@ this.Write(", \r\n");
         #line default
         #line hidden
         
-        #line 147 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 148 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("                    maxEntries: ");
 
         
         #line default
         #line hidden
         
-        #line 148 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 149 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(cachingStrategy.ExpirationPlugin.MaxEntries));
 
         
         #line default
         #line hidden
         
-        #line 148 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 149 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write(" \r\n");
 
         
         #line default
         #line hidden
         
-        #line 149 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 150 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
             }
 
@@ -436,14 +435,14 @@ this.Write(" \r\n");
         #line default
         #line hidden
         
-        #line 151 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 152 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("                })\r\n            ]\r\n");
 
         
         #line default
         #line hidden
         
-        #line 154 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 155 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
         }
         else
@@ -453,7 +452,7 @@ this.Write("                })\r\n            ]\r\n");
         #line default
         #line hidden
         
-        #line 158 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 159 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 this.Write("            plugins: [new workbox.cacheableResponse.CacheableResponsePlugin({ sta" +
         "tuses: [200] })]\r\n");
 
@@ -461,7 +460,7 @@ this.Write("            plugins: [new workbox.cacheableResponse.CacheableRespons
         #line default
         #line hidden
         
-        #line 160 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 161 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
         }
     }
@@ -470,7 +469,7 @@ this.Write("            plugins: [new workbox.cacheableResponse.CacheableRespons
         #line default
         #line hidden
         
-        #line 165 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerTemplate.tt"
+        #line 166 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
 
     protected CachingStrategy GetRouteCachingStrategy(List<CachingStrategy> cachingStrategies, RouteRegex routeRegex)
     {
@@ -490,7 +489,7 @@ this.Write("            plugins: [new workbox.cacheableResponse.CacheableRespons
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public class ServiceWorkerTemplateBase
+    public class ServiceWorkerConfigurationTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

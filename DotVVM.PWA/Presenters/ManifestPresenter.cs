@@ -25,8 +25,8 @@ namespace DotVVM.PWA.Presenters
             context.HttpContext.Response.ContentType = "application/json";
             using (var writer = new StreamWriter(context.HttpContext.Response.Body))
             {
-                var json = BuildManifest().ToString();
-                await writer.WriteAsync(json);
+                var manifest = BuildManifest();
+                await writer.WriteAsync(manifest.ToString());
                 await writer.FlushAsync();
             }
         }

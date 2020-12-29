@@ -30,311 +30,309 @@ namespace DotVVM.PWA.Templates.Manifest
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n");
             this.Write("\r\n{\r\n");
             
-            #line 9 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 11 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(!string.IsNullOrWhiteSpace(Options.Name)) {
             
             #line default
             #line hidden
             this.Write("  \"name\": \"");
             
-            #line 10 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 12 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.Name));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 11 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 13 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } 
             
             #line default
             #line hidden
             
-            #line 12 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 14 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(!string.IsNullOrWhiteSpace(Options.ShortName)) {
             
             #line default
             #line hidden
             this.Write("  \"short_name\": \"");
             
-            #line 13 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 15 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.ShortName));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 14 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 16 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } 
             
             #line default
             #line hidden
             
-            #line 15 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 17 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(!string.IsNullOrWhiteSpace(Options.Scope)) {
             
             #line default
             #line hidden
             this.Write("  \"scope\": \"");
             
-            #line 16 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 18 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.Scope));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 17 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 19 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } 
             
             #line default
             #line hidden
             
-            #line 18 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 20 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(!string.IsNullOrWhiteSpace(Options.StartUrl)) {
             
             #line default
             #line hidden
             this.Write("  \"start_url\": \"");
             
-            #line 19 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 21 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.StartUrl));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 20 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 22 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } 
             
             #line default
             #line hidden
             this.Write("  \"display\": \"");
             
-            #line 21 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 23 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.Display.ToManifestValue()));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 22 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 24 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(!string.IsNullOrWhiteSpace(Options.BackgroundColor)) {
             
             #line default
             #line hidden
             this.Write("  \"background_color\": \"");
             
-            #line 23 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 25 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.BackgroundColor));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 24 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 26 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } 
             
             #line default
             #line hidden
             
-            #line 25 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 27 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(!string.IsNullOrWhiteSpace(Options.ThemeColor)) {
             
             #line default
             #line hidden
             this.Write("  \"theme_color\": \"");
             
-            #line 26 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 28 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.ThemeColor));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 27 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 29 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } 
             
             #line default
             #line hidden
             
-            #line 28 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 30 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(Options.Categories?.Any() == true) {
             
             #line default
             #line hidden
             this.Write("  \"categories\": [");
             
-            #line 29 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 31 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(", ", Options.Categories.Select(c => $"\"{c}\""))));
             
             #line default
             #line hidden
             this.Write("],\r\n");
             
-            #line 30 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 32 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } 
             
             #line default
             #line hidden
             
-            #line 31 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 33 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(!string.IsNullOrWhiteSpace(Options.Description)) {
             
             #line default
             #line hidden
             this.Write("  \"description\": \"");
             
-            #line 32 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 34 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.Description));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 33 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 35 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } 
             
             #line default
             #line hidden
             this.Write("  \"dir\": \"");
             
-            #line 34 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 36 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.Dir.ToManifestValue()));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 35 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 37 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(!string.IsNullOrWhiteSpace(Options.IarcRatingId)) {
             
             #line default
             #line hidden
             this.Write("  \"iarc_rating_id\": \"");
             
-            #line 36 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 38 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.IarcRatingId));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 37 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 39 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } 
             
             #line default
             #line hidden
             
-            #line 38 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 40 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(!string.IsNullOrWhiteSpace(Options.Lang)) {
             
             #line default
             #line hidden
             this.Write("  \"lang\": \"");
             
-            #line 39 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 41 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.Lang));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 40 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 42 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } 
             
             #line default
             #line hidden
             this.Write("  \"orientation \": \"");
             
-            #line 41 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 43 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.Orientation.ToManifestValue()));
             
             #line default
             #line hidden
             this.Write("\",\r\n  \"prefer_related_applications \": ");
             
-            #line 42 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 44 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.PreferRelatedApplications.ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(",\r\n  \"icons\": [\r\n");
             
-            #line 44 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 46 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 for(var i = 0; i < Options.Icons.Length; i++) {
             
             #line default
             #line hidden
             this.Write("    {\r\n");
             
-            #line 46 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 48 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(Options.Icons[i].Purposes?.Any() == true) {
             
             #line default
             #line hidden
             this.Write("      \"purpose\": \"");
             
-            #line 47 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 49 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(" ", Options.Icons[i].Purposes.Select(p => p.ToManifestValue()))));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 48 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 50 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } 
             
             #line default
             #line hidden
             this.Write("      \"src\": \"");
             
-            #line 49 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 51 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.Icons[i].Src));
             
             #line default
             #line hidden
             this.Write("\",\r\n      \"type\": \"");
             
-            #line 50 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 52 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.Icons[i].Type));
             
             #line default
             #line hidden
             this.Write("\",\r\n      \"sizes\": \"");
             
-            #line 51 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 53 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Options.Icons[i].Sizes));
             
             #line default
             #line hidden
             this.Write("\"\r\n");
             
-            #line 52 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 54 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 if(i == Options.Icons.Length - 1) {
             
             #line default
             #line hidden
             this.Write("    }\r\n");
             
-            #line 54 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 56 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 } else {
             
             #line default
             #line hidden
             this.Write("    },\r\n");
             
-            #line 56 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 58 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 57 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+            #line 59 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
 }
             
             #line default
@@ -343,7 +341,7 @@ if(i == Options.Icons.Length - 1) {
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 61 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
+        #line 63 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\Manifest\ManifestTemplate.tt"
  public ManifestOptions Options { get; set; } 
         
         #line default

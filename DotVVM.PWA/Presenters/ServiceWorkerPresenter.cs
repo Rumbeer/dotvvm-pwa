@@ -11,11 +11,11 @@ using Microsoft.Extensions.Options;
 
 namespace DotVVM.PWA.Presenters
 {
-    public class ServiceWorkerPresenter : IDotvvmPresenter
+    public class ServiceWorkerConfigurationPresenter : IDotvvmPresenter
     {
         private readonly IOptions<ServiceWorkerOptions> _options;
 
-        public ServiceWorkerPresenter(IOptions<ServiceWorkerOptions> options)
+        public ServiceWorkerConfigurationPresenter(IOptions<ServiceWorkerOptions> options)
         {
             _options = options;
         }
@@ -24,14 +24,14 @@ namespace DotVVM.PWA.Presenters
             context.HttpContext.Response.ContentType = "text/javascript";
 
             var routeUrls = BuildRouteUrls(context);
-            var templateModel = new ServiceWorkerTemplateModel()
+            var templateModel = new ServiceWorkerConfigurationTemplateModel()
             {
                 RouteUrls = routeUrls,
                 CacheStrategies = BuildDefaultCacheStrategies()
             };
             using (var writer = new StreamWriter(context.HttpContext.Response.Body))
             {
-                var template = new ServiceWorkerTemplate()
+                var template = new ServiceWorkerConfigurationTemplate()
                 {
                     Model = templateModel
                 };
@@ -95,6 +95,17 @@ namespace DotVVM.PWA.Presenters
         private static List<RouteRegex> BuildRouteUrls(IDotvvmRequestContext context)
         {
             var urlPrefix = BuildUrlPrefix(context);
+
+            var regularExpressions = context.Configuration.RouteTable.Select(r =>
+            {
+                var parser = new DotvvmRouteParser(context.Configuration.RouteConstraints);
+
+                var regularExpression = parser.ParseRouteUrl(r.Url, r.DefaultValues).RouteRegex.ToString();
+                regularExpression = regularExpression.Replace("/?$", @"(\?.*?)?/?$");
+
+                return regularExpression.Replace(@"/", @"\/");
+            });
+
 
             return context.Configuration.RouteTable.Select(r =>
             {

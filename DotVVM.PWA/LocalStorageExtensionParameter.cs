@@ -11,7 +11,8 @@ namespace DotVVM.PWA
 {
     public class LocalStorageExtensionParameter : BindingExtensionParameter
     {
-        public LocalStorageExtensionParameter() : base("_localStorage", new ResolvedTypeDescriptor(typeof(LocalStorageInfo)), true)
+        public LocalStorageExtensionParameter() 
+            : base("_localStorage", new ResolvedTypeDescriptor(typeof(LocalStorageInfo)), true)
         {
         }
 
