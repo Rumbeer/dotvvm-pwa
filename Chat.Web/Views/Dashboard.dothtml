@@ -5,7 +5,7 @@
     <dot:Repeater DataSource="{value: Contacts}">
         <ItemTemplate>
             <dot:RouteLink class="contact__link"
-                           RouteName="Chat" 
+                           RouteName="Chat"
                            Param-UserId="{value: UserId}">
                 <div class="contact__container">
                     <img class="contact__content--image" src='https://placehold.it/80x80' />
@@ -13,15 +13,24 @@
                         {{value: FirstName}}
                         {{value: LastNameName}}
                     </span>
-                    <span class="contact__content--desc">
+                    <span IncludeInPage="{value:  LastMessage != null}"
+                          class="contact__content--desc">
                         {{value: LastMessage.IsCurrentUserSender ? "Já: " : ""}}{{value: LastMessage.LastMessageText}}
                     </span>
-                    <dot:Literal class="contact__content--date" 
+                    <dot:Literal IncludeInPage="{value:  LastMessage != null}"
+                                 class="contact__content--date"
                                  FormatString="dd.MM.yyyy"
                                  Text="{value: LastMessage.LastMessageDateTime}" />
                 </div>
             </dot:RouteLink>
         </ItemTemplate>
     </dot:Repeater>
+    <div class="form-container">
+        <div class="form-content">
+            <dot:TextBox class="form--input" Text="{value: NameFilter}" placeholder="Hledat uživatele..." />
+            <dot:Button class="form--button" Click="{command: FindAllUsers}" Text="Hledat" />
+        </div>
+    </div>
+
 </dot:Content>
 

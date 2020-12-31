@@ -43,7 +43,7 @@ namespace DotVVM.PWA
         {
             methods.AddMethodTranslator(typeof(LocalStorageInfo), nameof(Get),
                 new GenericMethodCompiler((a, m) =>
-                    new JsIdentifierExpression("dotvvm").Member("pwa").Member("localStorage").Member("get").Invoke(
+                    new JsIdentifierExpression("dotvvm").Member("pwa").Member("get").Invoke(
                             a[1].WithAnnotation(ObservableUnwrapInvocationAnnotation.Instance)
                         )
                         .WithAnnotation(MayBeNullAnnotation.Instance)
@@ -51,7 +51,7 @@ namespace DotVVM.PWA
                 ));
             methods.AddMethodTranslator(typeof(LocalStorageInfo), nameof(Set),
                 new GenericMethodCompiler(a =>
-                    new JsIdentifierExpression("dotvvm").Member("pwa").Member("localStorage").Member("set").Invoke(
+                    new JsIdentifierExpression("dotvvm").Member("pwa").Member("set").Invoke(
                         a[1].WithAnnotation(ObservableUnwrapInvocationAnnotation.Instance),
                         a[2].WithAnnotation(ShouldBeObservableAnnotation.Instance)
                     )

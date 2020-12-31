@@ -13,32 +13,15 @@ namespace Chat.DAL.Repositories
     {
         private readonly AppDbContext _context;
 
+
         public ChatContactRepository(AppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<List<ChatContactDTO>> GetChatContactsAsync(int userId)
+        public async Task<List<ChatContactDTO>> GetChatContactsAsync(int userId, string filterName = null)
         {
-            var chatMembers = await _context.ChatMessages
-                .Include(cm => cm.ChatMembers)
-                .ThenInclude(members => members.User)
-                .Where(cm => cm.ChatMembers.Any(member => member.UserId == userId))
-                .SelectMany(cm => cm.ChatMembers.Where(member => member.UserId != userId))
-                .ToListAsync();
-
-
-            var contacts = chatMembers
-                .GroupBy(cm => cm.UserId)
-                .Select(g => g.First().User)
-                .Select(c => new ChatContactDTO()
-                {
-                    UserId = c.Id,
-                    FirstName = c.FirstName,
-                    ImageUrl = c.ImageUrl,
-                    LastNameName = c.LastName,
-                })
-                .ToList();
+            var contacts = await FilterChatContactsAsync(userId, filterName);
 
             foreach (var contact in contacts)
             {
@@ -48,7 +31,11 @@ namespace Chat.DAL.Repositories
                     .Where(cm => cm.ChatMembers.Any(member => member.UserId == contact.UserId)
                                  && cm.ChatMembers.Any(member => member.UserId == userId))
                     .OrderByDescending(cm => cm.SentDateTime)
-                    .First();
+                    .FirstOrDefault();
+                if (lastChatMessage == null)
+                {
+                    continue;
+                }
                 contact.LastMessage = new LastMessageDTO()
                 {
                     LastMessageText = lastChatMessage.Text,
@@ -57,6 +44,41 @@ namespace Chat.DAL.Repositories
                 };
             }
             return contacts;
+        }
+
+        private async Task<List<ChatContactDTO>> FilterChatContactsAsync(int userId, string filterName)
+        {
+            if (!string.IsNullOrWhiteSpace(filterName))
+            {
+                return await _context.Users.Where(u => u.FirstName.Contains(filterName))
+                    .Select(c => new ChatContactDTO()
+                    {
+                        UserId = c.Id,
+                        FirstName = c.FirstName,
+                        ImageUrl = c.ImageUrl,
+                        LastNameName = c.LastName,
+                    })
+                    .ToListAsync();
+            }
+
+            var chatMembers = await _context.ChatMessages
+                .Include(cm => cm.ChatMembers)
+                .ThenInclude(members => members.User)
+                .Where(cm => cm.ChatMembers.Any(member => member.UserId == userId))
+                .SelectMany(cm => cm.ChatMembers.Where(member => member.UserId != userId))
+                .ToListAsync();
+
+            return chatMembers
+                .GroupBy(cm => cm.UserId)
+                .Select(g => g.First().User)
+                .Select(c => new ChatContactDTO()
+                {
+                    UserId = c.Id,
+                    FirstName = c.FirstName,
+                    ImageUrl = c.ImageUrl,
+                    LastNameName = c.LastName
+                })
+                .ToList();
         }
 
         private class ChatMemberUserIdEqualityComparer : EqualityComparer<ChatMember>

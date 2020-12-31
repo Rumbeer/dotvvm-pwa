@@ -7,22 +7,27 @@
 <dot:Content ContentPlaceHolderID="MainContent">
     <%--<pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set("messages", Messages)}"
                         OfflinePageLoad="{staticCommand: Messages = _localStorage.Get<Collections.List<ChatMessageDTO>>("messages")}" />--%>
-    <dot:Repeater DataSource="{value: Messages}"
-                  class="message__container">
-        <ItemTemplate>
-            <span Class-message__text--received="{value: MessageType == ChatMemberType.Receiver}"
-                  Class-message__text--sent="{value: MessageType == ChatMemberType.Sender}">
-                {{value: Text}}
-            </span>
-        </ItemTemplate>
-    </dot:Repeater>
-    <div class="message__form">
-        <dot:TextBox class="message__form--input" Text="{value: NewMessageText}" placeholder="Napište zprávu..." />
-        <dot:Button class="message__form--button" Click="{command: AddNewMessage}" Text="Odeslat" />
-    </div>
+
+        <dot:Repeater DataSource="{value: Messages}"
+                      class="message__container">
+            <ItemTemplate>
+                <span Class-message__text--received="{value: MessageType == ChatMemberType.Receiver}"
+                      Class-message__text--sent="{value: MessageType == ChatMemberType.Sender}">
+                    {{value: Text}}
+                </span>
+            </ItemTemplate>
+        </dot:Repeater>
+        <div class="form-container">
+            <div class="form-content">
+                <dot:TextBox class="form--input" Text="{value: NewMessageText}" placeholder="Napište zprávu..." />
+                <dot:Button class="form--button" Click="{command: AddNewMessage}" Text="Odeslat" />
+            </div>
+
+        </div>
+
     <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set("text", TestText)}"
                         OfflinePageLoad="{staticCommand: Text = _localStorage.Get<string>("text")}" />
-    {{value: TestText}}
+    <%--{{value: TestText}}
 <div>
     <dot:Button Click="{command: Change()}" Text="save text binding" />
     <dot:Button Click="{staticCommand: TestText = "Changed"}" Text="save text binding" />
@@ -57,6 +62,6 @@
         Number:
         <br>
         {{value: Number}}
-    </div>
+    </div>--%>
 </dot:Content>
 

@@ -10,7 +10,7 @@ namespace Chat.Web.ViewModels
 		public async Task SignOut()
         {
             await Context.GetAuthentication().SignOutAsync(IdentityConstants.ApplicationScheme);
-            Context.RedirectToRoute("Default", null, false, false);
+            Context.RedirectToRoute("Authentication_SignIn", null, false, false);
         }
     }
 }

@@ -38,6 +38,7 @@ namespace DotVVM.PWA.Controls
 
         protected override void AddAttributesToRender(IHtmlWriter writer, IDotvvmRequestContext context)
         {
+            writer.AddStyleAttribute("display", "none");
             writer.AddAttribute("class", "dotvvm__pwa__offline-handler", true);
             var onlinePageLoadBinding = GetCommandBinding(OnlinePageLoadProperty);
             if (onlinePageLoadBinding != null)

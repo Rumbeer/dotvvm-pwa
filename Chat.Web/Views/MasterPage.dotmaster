@@ -11,28 +11,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-
-	<div class="page-top">
-		<span class="page-top-left">
-			<span class="clear-both">
-				<AuthenticatedTemplate>
-					<dot:RouteLink Text="Dashboard" RouteName="Dashboard" class="page-button-text" />
-				</AuthenticatedTemplate>
+	<div class="page-container">
+		<div class="page-top">
+			<span class="page-top-left">
+				<span class="clear-both">
+					<AuthenticatedTemplate>
+						<dot:RouteLink Text="Dashboard" RouteName="Dashboard" class="page-button-text" />
+					</AuthenticatedTemplate>
+				</span>
 			</span>
-		</span>
 
-		<dot:AuthenticatedView>
-			<AuthenticatedTemplate>
-				<dot:LinkButton Text="Odhlásit se" Click="{command: SignOut()}" class="page-button-text" />
-			</AuthenticatedTemplate>
-			<NotAuthenticatedTemplate>
-				<dot:RouteLink Text="Přihlásit se" RouteName="Authentication_SignIn" class="page-button-text" />
-			</NotAuthenticatedTemplate>
-		</dot:AuthenticatedView>
+			<dot:AuthenticatedView>
+				<AuthenticatedTemplate>
+					<dot:LinkButton Text="Odhlásit se" Click="{command: SignOut()}" class="page-button-text" />
+				</AuthenticatedTemplate>
+				<NotAuthenticatedTemplate>
+					<dot:RouteLink Text="Přihlásit se" RouteName="Authentication_SignIn" class="page-button-text" />
+				</NotAuthenticatedTemplate>
+			</dot:AuthenticatedView>
+		</div>
+		<pwa:OfflineAlert Text="Výpadek připojení k internetu" />
+
+		<dot:ContentPlaceHolder ID="MainContent" />
 	</div>
-	<pwa:OfflineAlert Text="Výpadek připojení k internetu" />
 
-	<dot:ContentPlaceHolder ID="MainContent" />
 
 	<dot:RequiredResource Name="local-storage" />
 	<pwa:RegisterServiceWorker ServiceWorkerPath="/ServiceWorkerTest.js" />

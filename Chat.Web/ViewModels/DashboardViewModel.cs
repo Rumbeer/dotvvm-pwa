@@ -15,6 +15,7 @@ namespace Chat.Web.ViewModels
         [Bind(Direction.ServerToClient)]
         public int Id { get; set; }
         public List<ChatContactDTO> Contacts { get; set; }
+        public string NameFilter { get; set; }
 
         public DashboardViewModel(IChatContactRepository repository, CurrentUserProvider currentUserProvider)
         {
@@ -24,9 +25,17 @@ namespace Chat.Web.ViewModels
 
         public override async Task Load()
         {
-            Contacts = await _repository.GetChatContactsAsync(_currentUserProvider.Id);
-            Id = _currentUserProvider.Id;
+            if (!Context.IsPostBack)
+            {
+                Contacts = await _repository.GetChatContactsAsync(_currentUserProvider.Id, NameFilter);
+                Id = _currentUserProvider.Id;
+            }
             await base.Load();
+        }
+
+        public async Task FindAllUsers()
+        {
+            Contacts = await _repository.GetChatContactsAsync(_currentUserProvider.Id, NameFilter);
         }
     }
 }
