@@ -12,7 +12,7 @@ serviceWorkerConfiguration = (function() {
     function registerImages(){
         console.log("registering images");
 <# 
-    var imageCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Scripts);
+    var imageCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Images);
     GenerateStrategy(imageCachingStrategy, true); 
 #> 
         workbox.routing.registerRoute(
@@ -22,7 +22,7 @@ serviceWorkerConfiguration = (function() {
     function registerStyles(){
         console.log("registering styles");
 <# 
-    var styleCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Scripts);
+    var styleCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Styles);
     GenerateStrategy(styleCachingStrategy, true); 
 #> 
         workbox.routing.registerRoute(

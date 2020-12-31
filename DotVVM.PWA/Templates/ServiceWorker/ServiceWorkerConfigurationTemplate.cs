@@ -35,7 +35,7 @@ namespace DotVVM.PWA.Templates.ServiceWorker
             
             #line 14 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
  
-    var imageCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Scripts);
+    var imageCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Images);
     GenerateStrategy(imageCachingStrategy, true); 
 
             
@@ -47,7 +47,7 @@ namespace DotVVM.PWA.Templates.ServiceWorker
             
             #line 24 "C:\Users\pkost\Documents\Work\Chat\Chat\DotVVM.PWA\Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt"
  
-    var styleCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Scripts);
+    var styleCachingStrategy = Model.CacheStrategies.FirstOrDefault(cs => cs.ContentType == ContentType.Styles);
     GenerateStrategy(styleCachingStrategy, true); 
 
             
