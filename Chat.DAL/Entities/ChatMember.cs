@@ -12,5 +12,9 @@ namespace Chat.DAL.Entities
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
+        [ForeignKey(nameof(ChatMessage))]
+        public int ChatMessageId { get; set; }
+        public virtual ChatMessage ChatMessage { get; set; }
+
     }
 }

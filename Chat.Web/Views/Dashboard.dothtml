@@ -14,11 +14,11 @@
                         {{value: LastNameName}}
                     </span>
                     <span class="contact__content--desc">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus et lorem id felis
+                        {{value: LastMessage.IsCurrentUserSender ? "Já: " : ""}}{{value: LastMessage.LastMessageText}}
                     </span>
-                    <span class="contact__content--date">
-                        25.5.19
-                    </span>
+                    <dot:Literal class="contact__content--date" 
+                                 FormatString="dd.MM.yyyy"
+                                 Text="{value: LastMessage.LastMessageDateTime}" />
                 </div>
             </dot:RouteLink>
         </ItemTemplate>

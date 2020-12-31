@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using Chat.Common.DTOs;
+using Chat.Common.Enums;
 using Chat.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,25 +20,43 @@ namespace Chat.DAL.Repositories
 
         public async Task<List<ChatContactDTO>> GetChatContactsAsync(int userId)
         {
-            var contacts = await _context.ChatMessages
+            var chatMembers = await _context.ChatMessages
                 .Include(cm => cm.ChatMembers)
                 .ThenInclude(members => members.User)
                 .Where(cm => cm.ChatMembers.Any(member => member.UserId == userId))
                 .SelectMany(cm => cm.ChatMembers.Where(member => member.UserId != userId))
                 .ToListAsync();
-                
-                
-            return contacts
+
+
+            var contacts = chatMembers
                 .GroupBy(cm => cm.UserId)
                 .Select(g => g.First().User)
                 .Select(c => new ChatContactDTO()
                 {
-                    UserId = c.Id, 
+                    UserId = c.Id,
                     FirstName = c.FirstName,
                     ImageUrl = c.ImageUrl,
-                    LastNameName = c.LastName
+                    LastNameName = c.LastName,
                 })
                 .ToList();
+
+            foreach (var contact in contacts)
+            {
+                var lastChatMessage = _context.ChatMessages
+                    .Include(cm => cm.ChatMembers)
+                    .ThenInclude(members => members.User)
+                    .Where(cm => cm.ChatMembers.Any(member => member.UserId == contact.UserId)
+                                 && cm.ChatMembers.Any(member => member.UserId == userId))
+                    .OrderByDescending(cm => cm.SentDateTime)
+                    .First();
+                contact.LastMessage = new LastMessageDTO()
+                {
+                    LastMessageText = lastChatMessage.Text,
+                    LastMessageDateTime = lastChatMessage.SentDateTime,
+                    IsCurrentUserSender = lastChatMessage.ChatMembers.First(member => member.UserId == userId).Type == ChatMemberType.Sender
+                };
+            }
+            return contacts;
         }
 
         private class ChatMemberUserIdEqualityComparer : EqualityComparer<ChatMember>
@@ -63,5 +82,4 @@ namespace Chat.DAL.Repositories
             }
         }
     }
-
 }
