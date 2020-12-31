@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Chat.Common.DTOs;
 using Chat.DAL.Repositories;
+using Chat.Web.Services;
 using DotVVM.Framework.Runtime.Filters;
 using DotVVM.Framework.ViewModel;
 
@@ -10,16 +11,16 @@ namespace Chat.Web.ViewModels
     [Authorize]
     public class DashboardViewModel : MasterPageViewModel
     {
-        private readonly IChatContactRepository _repository;
+        private readonly ChatContactsService _chatContactsService;
         private readonly CurrentUserProvider _currentUserProvider;
         [Bind(Direction.ServerToClient)]
         public int Id { get; set; }
         public List<ChatContactDTO> Contacts { get; set; }
         public string NameFilter { get; set; }
 
-        public DashboardViewModel(IChatContactRepository repository, CurrentUserProvider currentUserProvider)
+        public DashboardViewModel(ChatContactsService chatContactsService, CurrentUserProvider currentUserProvider)
         {
-            _repository = repository;
+            _chatContactsService = chatContactsService;
             _currentUserProvider = currentUserProvider;
         }
 
@@ -27,7 +28,7 @@ namespace Chat.Web.ViewModels
         {
             if (!Context.IsPostBack)
             {
-                Contacts = await _repository.GetChatContactsAsync(_currentUserProvider.Id, NameFilter);
+                Contacts = await _chatContactsService.GetChatContactsAsync(_currentUserProvider.Id, NameFilter);
                 Id = _currentUserProvider.Id;
             }
             await base.Load();
@@ -35,7 +36,7 @@ namespace Chat.Web.ViewModels
 
         public async Task FindAllUsers()
         {
-            Contacts = await _repository.GetChatContactsAsync(_currentUserProvider.Id, NameFilter);
+            Contacts = await _chatContactsService.GetChatContactsAsync(_currentUserProvider.Id, NameFilter);
         }
     }
 }

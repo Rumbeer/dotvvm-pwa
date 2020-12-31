@@ -4,12 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat.Web", "Chat.Web\Chat.Web.csproj", "{DDB1660A-BC6F-4409-B71D-A2C60AA1C6F8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{88BE0A4A-C1C2-4778-BFAC-33DCC6CA3B28} = {88BE0A4A-C1C2-4778-BFAC-33DCC6CA3B28}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat.DAL", "Chat.DAL\Chat.DAL.csproj", "{E7F189AB-DCA7-4588-83BF-71FCF5A8FBF3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat.Common", "Chat.Common\Chat.Common.csproj", "{61E5382A-F518-459E-A6A0-00D57A44AB28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotVVM.PWA", "DotVVM.PWA\DotVVM.PWA.csproj", "{A6AA7B3F-E1AF-4A1B-AD22-34A079A06B63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotVVM.PWA", "DotVVM.PWA\DotVVM.PWA.csproj", "{A6AA7B3F-E1AF-4A1B-AD22-34A079A06B63}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotVVM.Mediator", "DotVVM.Mediator\DotVVM.Mediator.csproj", "{88BE0A4A-C1C2-4778-BFAC-33DCC6CA3B28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{A6AA7B3F-E1AF-4A1B-AD22-34A079A06B63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6AA7B3F-E1AF-4A1B-AD22-34A079A06B63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6AA7B3F-E1AF-4A1B-AD22-34A079A06B63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88BE0A4A-C1C2-4778-BFAC-33DCC6CA3B28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88BE0A4A-C1C2-4778-BFAC-33DCC6CA3B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88BE0A4A-C1C2-4778-BFAC-33DCC6CA3B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88BE0A4A-C1C2-4778-BFAC-33DCC6CA3B28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

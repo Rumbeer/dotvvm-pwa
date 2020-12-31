@@ -4,26 +4,32 @@
 @import ChatMessageDTO = Chat.Common.DTOs.ChatMessageDTO
 @import Collections = System.Collections.Generic
 @import ChatMemberType = Chat.Common.Enums.ChatMemberType
+
+@service chatMessageService = Chat.Web.Services.ChatMessageService
 <dot:Content ContentPlaceHolderID="MainContent">
     <%--<pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set("messages", Messages)}"
                         OfflinePageLoad="{staticCommand: Messages = _localStorage.Get<Collections.List<ChatMessageDTO>>("messages")}" />--%>
-
-        <dot:Repeater DataSource="{value: Messages}"
-                      class="message__container">
-            <ItemTemplate>
-                <span Class-message__text--received="{value: MessageType == ChatMemberType.Receiver}"
-                      Class-message__text--sent="{value: MessageType == ChatMemberType.Sender}">
-                    {{value: Text}}
-                </span>
-            </ItemTemplate>
-        </dot:Repeater>
-        <div class="form-container">
-            <div class="form-content">
-                <dot:TextBox class="form--input" Text="{value: NewMessageText}" placeholder="Napište zprávu..." />
-                <dot:Button class="form--button" Click="{command: AddNewMessage}" Text="Odeslat" />
-            </div>
-
+    <dot:Mediator GroupName="{value: Id + "_" + ChatMemberUserId}"
+                  MethodName="ChatMessageAdded"
+                  Command="{staticCommand: Messages = chatMessageService.GetChatMessagesAsync(Id, ChatMemberUserId).Result;
+                                           _localStorage.Set<Collections.List<ChatMessageDTO>>(Id + "_" + ChatMemberUserId, Messages)}"
+                  PostBack.Concurrency="Queue" />
+    <dot:Repeater DataSource="{value: Messages}"
+                  class="message__container">
+        <ItemTemplate>
+            <span Class-message__text--received="{value: MessageType == ChatMemberType.Receiver}"
+                  Class-message__text--sent="{value: MessageType == ChatMemberType.Sender}">
+                {{value: Text}}
+            </span>
+        </ItemTemplate>
+    </dot:Repeater>
+    <div class="form-container">
+        <div class="form-content">
+            <dot:TextBox class="form--input" Text="{value: NewMessageText}" placeholder="Napište zprávu..." />
+            <dot:Button class="form--button" Click="{command: AddNewMessage}" Text="Odeslat" />
         </div>
+
+    </div>
 
     <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set("text", TestText)}"
                         OfflinePageLoad="{staticCommand: Text = _localStorage.Get<string>("text")}" />

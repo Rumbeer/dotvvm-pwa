@@ -263,7 +263,7 @@ textarea.page-input {
 .message__container {
     margin: 0 0.5rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     overflow-y: scroll;
 }
 

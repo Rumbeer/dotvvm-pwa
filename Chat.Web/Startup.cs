@@ -4,6 +4,7 @@ using Chat.DAL.Entities;
 using Chat.DAL.Repositories;
 using Chat.Web.Services;
 using DotVVM.Framework.Routing;
+using DotVVM.Mediator;
 using DotVVM.PWA;
 using DotVVM.PWA.Options.Manifest;
 using DotVVM.PWA.Options.ServiceWorker;
@@ -45,6 +46,8 @@ namespace Chat.Web
             services.AddTransient<IChatContactRepository, ChatContactRepository>();
             services.AddTransient<IChatMessageRepository, ChatMessageRepository>();
             services.AddTransient<CurrentUserProvider>();
+            services.AddTransient<ChatContactsService>();
+            services.AddTransient<ChatMessageService>();
             services.AddTransient<Seed>();
 
             services.AddEntityFrameworkSqlServer()
@@ -163,6 +166,7 @@ namespace Chat.Web
                 };
             });
             services.AddDotVVM<DotvvmStartup>();
+            services.AddDotvvmMediator();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -177,6 +181,13 @@ namespace Chat.Web
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(env.WebRootPath)
+            });
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<MediatorHub>("/mediator-hub");
             });
         }
     }

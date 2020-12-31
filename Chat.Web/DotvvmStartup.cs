@@ -59,7 +59,7 @@ namespace Chat.Web
 
         public void ConfigureServices(IDotvvmServiceCollection options)
         {
-            options.AddDefaultTempStorages("temp");
+            options.AddBusinessPack().AddDefaultTempStorages("temp");
         }
     }
 }

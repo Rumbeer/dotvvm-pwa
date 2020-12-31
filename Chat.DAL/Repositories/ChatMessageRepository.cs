@@ -19,7 +19,8 @@ namespace Chat.DAL.Repositories
         public Task<List<ChatMessageDTO>> GetChatMessagesAsync(int currentUserId, int receiverId)
         {
             var messages = _context.ChatMessages
-                .Where(m => m.ChatMembers.All(cm => cm.UserId == currentUserId || cm.UserId == receiverId));
+                .Where(m => m.ChatMembers.All(cm => cm.UserId == currentUserId || cm.UserId == receiverId))
+                .OrderByDescending(m => m.SentDateTime);
 
             return messages.Select(m => new ChatMessageDTO()
             {
