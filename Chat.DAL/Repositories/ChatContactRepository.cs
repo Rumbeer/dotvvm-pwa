@@ -50,7 +50,18 @@ namespace Chat.DAL.Repositories
         {
             if (!string.IsNullOrWhiteSpace(filterName))
             {
-                return await _context.Users.Where(u => u.FirstName.Contains(filterName))
+                IQueryable<User> users;
+                var name = filterName.Split(' ');
+                if (name.Length > 1)
+                {
+                    users = _context.Users.Where(u => u.FirstName.Contains(name[0]) && u.LastName.Contains(name[1]));
+                }
+                else
+                {
+                    users = _context.Users
+                        .Where(u => u.FirstName.Contains(filterName) || u.LastName.Contains(filterName) || u.UserName.Contains(filterName));
+                }
+                return await users
                     .Select(c => new ChatContactDTO()
                     {
                         UserId = c.Id,
