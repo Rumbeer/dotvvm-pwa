@@ -132,10 +132,11 @@ namespace DotVVM.PWA.Presenters
                     ? context.HttpContext.Request.PathBase.Value ?? string.Empty
                     : string.Empty,
                 Query = string.Empty,
-                Fragment = string.Empty
+                Fragment = string.Empty,
+                Port = -1
             }.ToString();
-
-            return urlPrefix.EndsWith("/") ? urlPrefix.Substring(0, urlPrefix.Length - 1) : urlPrefix;
+            urlPrefix = urlPrefix.EndsWith("/") ? urlPrefix.Substring(0, urlPrefix.Length - 1) : urlPrefix;
+            return @$"{urlPrefix}(\:[0-9]{{1,5}}?)?";
         }
     }
 }

@@ -125,24 +125,24 @@ namespace Chat.Web
                 {
                     new Icon
                     {
-                        Src = "/Resources/Images/favicons/favicon-128x128.png",
-                        Sizes = "128x128",
+                        Src = "/Resources/Images/favicons/favicon-32x32.png",
+                        Sizes = "32x32",
                         Type = "image/png",
                         Purposes = new[] {IconPurpose.Maskable}
                     },
                     new Icon
                     {
-                        Src = "/Resources/Images/favicons/favicon-144x144.png",
-                        Sizes = "144x144",
+                        Src = "/Resources/Images/favicons/favicon-64x64.png",
+                        Sizes = "64x64",
                         Type = "image/png",
-                        Purposes = new[] { IconPurpose.Maskable, IconPurpose.Any}
+                        Purposes = new[] {IconPurpose.Maskable}
                     },
                     new Icon
                     {
-                        Src = "/Resources/Images/favicons/favicon-152x152.png",
-                        Sizes = "152x152",
+                        Src = "/Resources/Images/favicons/favicon-128x128.png",
+                        Sizes = "128x128",
                         Type = "image/png",
-                        Purposes = new[] {IconPurpose.Maskable, IconPurpose.Monochrome, IconPurpose.Any}
+                        Purposes = new[] {IconPurpose.Maskable}
                     },
                     new Icon
                     {
