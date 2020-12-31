@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Chat.Web/Properties/serviceDependencies.json
+/Chat.Web/Properties/serviceDependencies.ChatPWA - Web Deploy.json
+/Chat.Web/Properties/ServiceDependencies/ChatPWA - Web Deploy/profile.arm.json
+/Chat.Web/Properties/ServiceDependencies/ChatPWA - Web Deploy/mssql1.arm.json
