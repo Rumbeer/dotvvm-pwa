@@ -74,6 +74,7 @@ namespace Chat.Web
 
             services.AddPwaServiceWorker(swOptions =>
             {
+                swOptions.UseCustomServiceWorker = true;
                 swOptions.CacheStrategies = new List<CachingStrategy>()
                 {
                     new CachingStrategy()

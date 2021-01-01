@@ -44,6 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\Resources\Scripts\chat.js" />
-    <None Include="wwwroot\ServiceWorkerTest.js" />
+    <None Include="wwwroot\ServiceWorker.js" />
   </ItemGroup>
 </Project>

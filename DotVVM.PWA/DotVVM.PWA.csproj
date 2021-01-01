@@ -10,6 +10,7 @@
     <None Remove="Resources\Scripts\Controls\OfflineHandler.js" />
     <None Remove="Resources\Scripts\Controls\RegisterServiceWorker.js" />
     <None Remove="Resources\Scripts\Controls\ServiceWorker.js" />
+    <None Remove="Resources\Scripts\ServiceWorker.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
     <EmbeddedResource Include="Resources\Scripts\Controls\OfflineAlert.js" />
     <EmbeddedResource Include="Resources\Scripts\Controls\OfflineHandler.js" />
     <EmbeddedResource Include="Resources\Scripts\Controls\RegisterServiceWorker.js" />
+    <EmbeddedResource Include="Resources\Scripts\ServiceWorker.js" />
   </ItemGroup>
 
   <ItemGroup>
