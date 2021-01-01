@@ -7,41 +7,42 @@
 @service chatContactsService = Chat.Web.Services.ChatContactsService
 
 <dot:Content ContentPlaceHolderID="MainContent">
-    <dot:Mediator GroupName="{value: Id}"
-                  MethodName="ChatMessageAdded"
-                  Command="{staticCommand: Contacts = chatContactsService.GetChatContactsAsync(Id, NameFilter).Result;
-                                           _localStorage.Set<Collections.List<ChatContactDTO>>("Contacts_" + Id + "", Contacts)}"
-                  PostBack.Concurrency="Queue" />
-    <dot:Repeater class="contacts__container" DataSource="{value: Contacts}">
-        <ItemTemplate>
-            <dot:RouteLink class="contact__link"
-                           RouteName="Chat"
-                           Param-UserId="{value: UserId}">
-                <div class="contact__container">
-                    <img class="contact__content--image" src='https://placehold.it/80x80' />
-                    <span class="contact__content--title">
-                        {{value: FirstName}}
-                        {{value: LastNameName}}
-                    </span>
-                    <span IncludeInPage="{value:  LastMessage != null}"
-                          class="contact__content--desc">
-                        {{value: LastMessage.IsCurrentUserSender ? "Já: " : ""}}{{value: LastMessage.LastMessageText}}
-                    </span>
-                    <dot:Literal IncludeInPage="{value:  LastMessage != null}"
-                                 class="contact__content--date"
-                                 FormatString="dd.MM.yyyy"
-                                 Text="{value: LastMessage.LastMessageDateTime}" />
-                </div>
-            </dot:RouteLink>
-        </ItemTemplate>
-    </dot:Repeater>
+        <dot:RequiredResource Name="chat" />
+        <dot:Repeater class="contacts__container" DataSource="{value: Contacts}">
+            <dot:LinkButton ID="chat-reload-btn"
+                            class="reload-link"
+                            Text="Načíst zprávy"
+                            Click="{staticCommand: _root.Contacts = chatContactsService.GetChatContactsAsync(Id, NameFilter).Result;
+                                                   _localStorage.Set<Collections.List<ChatContactDTO>>("Contacts_" + _root.Id, _root.Contacts)}" />
+            <ItemTemplate>
+                <dot:RouteLink class="contact__link"
+                               RouteName="Chat"
+                               Param-UserId="{value: UserId}">
+                    <div class="contact__container">
+                        <img class="contact__content--image" src='https://placehold.it/80x80' />
+                        <span class="contact__content--title">
+                            {{value: FirstName}}
+                            {{value: LastNameName}}
+                        </span>
+                        <span IncludeInPage="{value:  LastMessage != null}"
+                              class="contact__content--desc">
+                            {{value: LastMessage.IsCurrentUserSender ? "Já: " : ""}}{{value: LastMessage.LastMessageText}}
+                        </span>
+                        <dot:Literal IncludeInPage="{value:  LastMessage != null}"
+                                     class="contact__content--date"
+                                     FormatString="dd.MM.yyyy"
+                                     Text="{value: LastMessage.LastMessageDateTime}" />
+                    </div>
+                </dot:RouteLink>
+            </ItemTemplate>
+        </dot:Repeater>
     <div class="form-container">
         <div class="form-content">
             <dot:TextBox class="form--input" Text="{value: NameFilter}" placeholder="Hledat uživatele..." />
             <dot:Button class="form--button" Click="{command: FindAllUsers}" Text="Hledat" />
         </div>
     </div>
-    <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set<Collections.List<ChatContactDTO>>("Chat_" + Id + "", Contacts)}"
-                        OfflinePageLoad="{staticCommand: Contacts = _localStorage.Get<Collections.List<ChatContactDTO>>("Chat_" + Id + "")}" />
+    <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set<Collections.List<ChatContactDTO>>("Chat_" + Id, Contacts)}"
+                        OfflinePageLoad="{staticCommand: Contacts = _localStorage.Get<Collections.List<ChatContactDTO>>("Chat_" + Id)}" />
 </dot:Content>
 

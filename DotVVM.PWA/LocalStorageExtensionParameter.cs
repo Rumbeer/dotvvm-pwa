@@ -31,29 +31,27 @@ namespace DotVVM.PWA
     {
         public T Get<T>(string name)
         {
-            throw new NotImplementedException();
+            //TODO add exception message
+            throw new NotSupportedException();
         }
 
         public void Set<T>(string name, T obj)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public static void RegisterJavascriptTranslations(JavascriptTranslatableMethodCollection methods)
         {
             methods.AddMethodTranslator(typeof(LocalStorageInfo), nameof(Get),
                 new GenericMethodCompiler((a, m) =>
-                    new JsIdentifierExpression("dotvvm").Member("pwa").Member("get").Invoke(
-                            a[1].WithAnnotation(ObservableUnwrapInvocationAnnotation.Instance)
-                        )
+                    new JsIdentifierExpression("dotvvm").Member("pwa").Member("get").Invoke(a[1])
                         .WithAnnotation(MayBeNullAnnotation.Instance)
                         .WithAnnotation(new ViewModelInfoAnnotation(m.ReturnType))
                 ));
             methods.AddMethodTranslator(typeof(LocalStorageInfo), nameof(Set),
                 new GenericMethodCompiler(a =>
                     new JsIdentifierExpression("dotvvm").Member("pwa").Member("set").Invoke(
-                        a[1].WithAnnotation(ObservableUnwrapInvocationAnnotation.Instance),
-                        a[2].WithAnnotation(ShouldBeObservableAnnotation.Instance)
+                        a[1], a[2].WithAnnotation(ShouldBeObservableAnnotation.Instance)
                     )
                 ));
         }

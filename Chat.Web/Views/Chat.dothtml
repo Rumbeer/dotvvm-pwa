@@ -8,11 +8,12 @@
 @service chatMessageService = Chat.Web.Services.ChatMessageService
 
 <dot:Content ContentPlaceHolderID="MainContent">
-    <dot:Mediator GroupName="{value: Id + "_" + ChatMemberUserId}"
-                  MethodName="ChatMessageAdded"
-                  Command="{staticCommand: Messages = chatMessageService.GetChatMessagesAsync(Id, ChatMemberUserId).Result;
-                                           _localStorage.Set<Collections.List<ChatMessageDTO>>("Chat_" + Id + "_" + ChatMemberUserId + "", Messages)}"
-                  PostBack.Concurrency="Queue" />
+    <dot:RequiredResource Name="chat" />
+    <dot:LinkButton ID="chat-reload-btn" 
+                    class="reload-link"
+                    Text="Načíst zprávy"
+                    Click="{staticCommand: Messages = chatMessageService.GetChatMessagesAsync(Id, ChatMemberUserId).Result;
+                                       _localStorage.Set<Collections.List<ChatMessageDTO>>("Chat_" + Id + "_" + ChatMemberUserId + "", Messages)}" />
     <dot:Repeater DataSource="{value: Messages}"
                   class="message__container">
         <ItemTemplate>
@@ -30,7 +31,7 @@
 
     </div>
 
-    <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set<Collections.List<ChatMessageDTO>>("Chat_" + Id + "_" + ChatMemberUserId + "", Messages)}"
+    <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set<Collections.List<ChatMessageDTO>>(("Chat_" + Id + "_" + ChatMemberUserId), Messages)}"
                         OfflinePageLoad="{staticCommand: Messages = _localStorage.Get<Collections.List<ChatMessageDTO>>("Chat_" + Id + "_" + ChatMemberUserId + "")}" />
 </dot:Content>
 

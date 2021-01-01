@@ -44,6 +44,19 @@ namespace Chat.Web
                     Dependencies = new[] {"dotvvm"},
                     RenderPosition = ResourceRenderPosition.Body
                 });
+            config.Resources.Register("signalr",
+                new ScriptResource
+                {
+                    Location = new UrlResourceLocation("https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.7/signalr.min.js"),
+                    RenderPosition = ResourceRenderPosition.Body
+                });
+            config.Resources.Register("chat",
+                new ScriptResource
+                {
+                    Location = new UrlResourceLocation("~/Resources/Scripts/chat.js"),
+                    Dependencies = new[] { "dotvvm", "signalr" },
+                    RenderPosition = ResourceRenderPosition.Body
+                }); 
             // register custom resources and adjust paths to the built-in resources
             config.Resources.Register("Styles", new StylesheetResource()
             {
@@ -59,7 +72,7 @@ namespace Chat.Web
 
         public void ConfigureServices(IDotvvmServiceCollection options)
         {
-            options.AddBusinessPack().AddDefaultTempStorages("temp");
+            options.AddDefaultTempStorages("temp");
         }
     }
 }

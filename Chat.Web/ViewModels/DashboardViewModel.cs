@@ -16,6 +16,7 @@ namespace Chat.Web.ViewModels
         [Bind(Direction.ServerToClient)]
         public int Id { get; set; }
         public List<ChatContactDTO> Contacts { get; set; }
+        public string SignalRGroupName { get; set; }
         public string NameFilter { get; set; }
 
         public DashboardViewModel(ChatContactsService chatContactsService, CurrentUserProvider currentUserProvider)
@@ -30,6 +31,7 @@ namespace Chat.Web.ViewModels
             {
                 Contacts = await _chatContactsService.GetChatContactsAsync(_currentUserProvider.Id, NameFilter);
                 Id = _currentUserProvider.Id;
+                SignalRGroupName = Id.ToString();
             }
             await base.Load();
         }

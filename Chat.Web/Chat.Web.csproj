@@ -8,6 +8,9 @@
     <None Remove="**/*.dothtml;**/*.dotmaster;**/*.dotcontrol" />
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="wwwroot\Resources\Scripts\chat.js" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="dotvvm_serialized_config.json.tmp" />
   </ItemGroup>
   <ItemGroup>
@@ -27,7 +30,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Chat.Common\Chat.Common.csproj" />
     <ProjectReference Include="..\Chat.DAL\Chat.DAL.csproj" />
-    <ProjectReference Include="..\DotVVM.Mediator\DotVVM.Mediator.csproj" />
     <ProjectReference Include="..\DotVVM.PWA\DotVVM.PWA.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +38,7 @@
     <Folder Include="wwwroot\Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="wwwroot\Resources\Scripts\chat.js" />
     <None Include="wwwroot\ServiceWorkerTest.js" />
   </ItemGroup>
 </Project>

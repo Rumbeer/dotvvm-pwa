@@ -372,3 +372,14 @@ textarea.page-input {
     grid-area: form;
     margin: 0.7rem 0.5rem 1.5rem;
 }
+.reload-link {
+    text-align: center;
+    color: inherit;
+    text-decoration: inherit;
+    margin: 0.5rem 0;
+    color: #3176bb;
+}
+
+.reload-link:hover {
+    color: #004890;
+}

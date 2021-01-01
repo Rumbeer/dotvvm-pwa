@@ -36,10 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Templates\Manifest\ManifestTemplate.tt">
-      <LastGenOutput>ManifestTemplate.cs</LastGenOutput>
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-    </None>
     <None Update="Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ServiceWorkerConfigurationTemplate.cs</LastGenOutput>
@@ -47,11 +43,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Templates\Manifest\ManifestTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ManifestTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Update="Templates\ServiceWorker\ServiceWorkerConfigurationTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
