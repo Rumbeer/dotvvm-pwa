@@ -23,9 +23,7 @@
         </div>
 
         <div class="btn-container">
-			<dot:Button Text="{resource: Texts.Label_SignIn}" IsSubmitButton="true" Click="{command: SignIn()}" class="page-button"/>
-			
-		    <dot:RouteLink RouteName="Authentication_Register" Text="{resource: Texts.Label_Register}" class="page-button"/>
+			<dot:Button Text="Přihlásit se" IsSubmitButton="true" Click="{command: SignIn()}" class="page-button"/>
 		</div>
     </div>
 </dot:Content>

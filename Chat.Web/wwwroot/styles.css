@@ -41,6 +41,9 @@ h1 {
 }
 
 .page-box {
+    max-width: 40rem;
+    justify-self: center;
+    width: 100%;
     grid-area: content;
     display: inline-block;
     margin: 30px;
@@ -270,6 +273,9 @@ textarea.page-input {
 }
 
 .message__container {
+    max-width: 50rem;
+    justify-self: center;
+    width: 100%;
     grid-area: content;
     margin: 0 0.5rem;
     display: flex;
@@ -322,6 +328,9 @@ textarea.page-input {
 }
 
 .contacts__container {
+    max-width: 50rem;
+    justify-self: center;
+    width: 100%;
     overflow: auto;
     grid-area: content;
 }
@@ -369,6 +378,9 @@ textarea.page-input {
 }
 
 .form-container {
+    max-width: 50rem;
+    justify-self: center;
+    width: 100%;
     grid-area: form;
     margin: 0.7rem 0.5rem 1.5rem;
 }

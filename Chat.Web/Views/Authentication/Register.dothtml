@@ -44,7 +44,7 @@
 
         <dot:ValidationSummary Validator.HideWhenValid="true" />
         <div class="btn-container">
-            <dot:Button Text="{resource: Texts.Label_Register}" IsSubmitButton="true" Click="{command: Register()}" class="page-button" />
+            <dot:Button Text="Registrovat se" IsSubmitButton="true" Click="{command: Register()}" class="page-button" />
         </div>
     </div>
     

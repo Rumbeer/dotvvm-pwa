@@ -15,9 +15,11 @@
 		<div class="page-top">
 			<span class="page-top-left">
 				<span class="clear-both">
-					<AuthenticatedTemplate>
-						<dot:RouteLink Text="Dashboard" RouteName="Dashboard" class="page-button-text" />
-					</AuthenticatedTemplate>
+					<dot:AuthenticatedView>
+						<AuthenticatedTemplate>
+							<dot:RouteLink Text="Kontakty" RouteName="Dashboard" class="page-button-text" />
+						</AuthenticatedTemplate>
+					</dot:AuthenticatedView>
 				</span>
 			</span>
 
@@ -26,7 +28,8 @@
 					<dot:LinkButton Text="Odhlásit se" Click="{command: SignOut()}" class="page-button-text" />
 				</AuthenticatedTemplate>
 				<NotAuthenticatedTemplate>
-					<dot:RouteLink Text="Přihlásit se" RouteName="Authentication_SignIn" class="page-button-text" />
+					<dot:RouteLink IncludeInPage="{value: CurrentRoute == "Authentication_SignIn"}" Text="Registrace" RouteName="Authentication_Register" class="page-button-text" />
+					<dot:RouteLink IncludeInPage="{value: CurrentRoute == "Authentication_Register"}" Text="Přihlášení" RouteName="Authentication_SignIn" class="page-button-text" />
 				</NotAuthenticatedTemplate>
 			</dot:AuthenticatedView>
 		</div>

@@ -7,7 +7,8 @@ namespace Chat.Web.ViewModels
 {
     public class MasterPageViewModel : DotvvmViewModelBase
     {
-		public async Task SignOut()
+        public string CurrentRoute => Context.Route?.RouteName;
+        public async Task SignOut()
         {
             await Context.GetAuthentication().SignOutAsync(IdentityConstants.ApplicationScheme);
             Context.RedirectToRoute("Authentication_SignIn", null, false, false);

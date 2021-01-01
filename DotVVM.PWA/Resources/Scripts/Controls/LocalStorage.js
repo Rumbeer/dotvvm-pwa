@@ -31,7 +31,7 @@
     function updateLocalStorage(name, value) {
         const unwrappedValue = ko.unwrap(value);
         const serializedValue = dotvvm.serialization.serialize(unwrappedValue, { serializeAll: true });
-        localStorage.setItem(name, serializedValue);
+        localStorage.setItem(name, JSON.stringify(serializedValue));
     }
 
     return {
