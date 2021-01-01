@@ -175,7 +175,7 @@ namespace Chat.Web
             });
 
             app.UseRouting();
-
+            app.UseHttpsRedirection();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<ChatHub>("/chat-hub");
