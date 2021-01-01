@@ -5,7 +5,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="**/*.dothtml;**/*.dotmaster;**/*.dotcontrol" Exclude="obj/**/*.*;bin/**/*.*" CopyToPublishDirectory="Always" />
+    <Compile Remove="Controls\**" />
+    <Compile Remove="Resources\**" />
+    <Content Remove="Controls\**" />
+    <Content Remove="Resources\**" />
+    <EmbeddedResource Remove="Controls\**" />
+    <EmbeddedResource Remove="Resources\**" />
     <None Remove="**/*.dothtml;**/*.dotmaster;**/*.dotcontrol" />
+    <None Remove="Controls\**" />
+    <None Remove="Resources\**" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\Resources\Scripts\chat.js" />
@@ -32,8 +40,6 @@
     <ProjectReference Include="..\DotVVM.PWA\DotVVM.PWA.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
-    <Folder Include="Resources\Scripts\" />
     <Folder Include="wwwroot\Resources\Images\" />
   </ItemGroup>
   <ItemGroup>

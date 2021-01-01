@@ -12,7 +12,7 @@
             <dot:LinkButton ID="chat-reload-btn"
                             class="reload-link"
                             Text="Načíst zprávy"
-                            Click="{staticCommand: _root.Contacts = chatContactsService.GetChatContactsAsync(Id, NameFilter).Result;
+                            Click="{staticCommand: _root.Contacts = chatContactsService.GetChatContactsAsync(_root.Id, _root.NameFilter).Result;
                                                    _localStorage.Set<Collections.List<ChatContactDTO>>("Contacts_" + _root.Id, _root.Contacts)}" />
             <ItemTemplate>
                 <dot:RouteLink class="contact__link"
