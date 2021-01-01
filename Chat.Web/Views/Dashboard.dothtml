@@ -7,35 +7,36 @@
 @service chatContactsService = Chat.Web.Services.ChatContactsService
 
 <dot:Content ContentPlaceHolderID="MainContent">
-        <dot:RequiredResource Name="chat" />
-        <dot:Repeater class="contacts__container" DataSource="{value: Contacts}">
-            <dot:LinkButton ID="chat-reload-btn"
-                            class="reload-link"
-                            Text="Načíst zprávy"
-                            Click="{staticCommand: _root.Contacts = chatContactsService.GetChatContactsAsync(_root.Id, _root.NameFilter).Result;
+    <dot:RequiredResource Name="chat" />
+    <dot:LinkButton ID="chat-reload-btn"
+                    class="reload-link"
+                    Text="Načíst kontakty"
+                    Click="{staticCommand: _root.Contacts = chatContactsService.GetChatContactsAsync(_root.Id, _root.NameFilter).Result;
                                                    _localStorage.Set<Collections.List<ChatContactDTO>>("Contacts_" + _root.Id, _root.Contacts)}" />
-            <ItemTemplate>
-                <dot:RouteLink class="contact__link"
-                               RouteName="Chat"
-                               Param-UserId="{value: UserId}">
-                    <div class="contact__container">
-                        <img class="contact__content--image" src='https://placehold.it/80x80' />
-                        <span class="contact__content--title">
-                            {{value: FirstName}}
-                            {{value: LastNameName}}
-                        </span>
-                        <span IncludeInPage="{value:  LastMessage != null}"
-                              class="contact__content--desc">
-                            {{value: LastMessage.IsCurrentUserSender ? "Já: " : ""}}{{value: LastMessage.LastMessageText}}
-                        </span>
-                        <dot:Literal IncludeInPage="{value:  LastMessage != null}"
-                                     class="contact__content--date"
-                                     FormatString="dd.MM.yyyy"
-                                     Text="{value: LastMessage.LastMessageDateTime}" />
-                    </div>
-                </dot:RouteLink>
-            </ItemTemplate>
-        </dot:Repeater>
+
+    <dot:Repeater class="contacts__container" DataSource="{value: Contacts}">
+        <ItemTemplate>
+            <dot:RouteLink class="contact__link"
+                           RouteName="Chat"
+                           Param-UserId="{value: UserId}">
+                <div class="contact__container">
+                    <img class="contact__content--image" src='https://placehold.it/80x80' />
+                    <span class="contact__content--title">
+                        {{value: FirstName}}
+                        {{value: LastNameName}}
+                    </span>
+                    <span IncludeInPage="{value:  LastMessage != null}"
+                          class="contact__content--desc">
+                        {{value: LastMessage.IsCurrentUserSender ? "Já: " : ""}}{{value: LastMessage.LastMessageText}}
+                    </span>
+                    <dot:Literal IncludeInPage="{value:  LastMessage != null}"
+                                 class="contact__content--date"
+                                 FormatString="dd.MM.yyyy"
+                                 Text="{value: LastMessage.LastMessageDateTime}" />
+                </div>
+            </dot:RouteLink>
+        </ItemTemplate>
+    </dot:Repeater>
     <div class="form-container">
         <div class="form-content">
             <dot:TextBox class="form--input" Text="{value: NameFilter}" placeholder="Hledat uživatele..." />
