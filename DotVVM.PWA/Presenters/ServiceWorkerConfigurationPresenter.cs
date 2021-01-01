@@ -19,6 +19,7 @@ namespace DotVVM.PWA.Presenters
         {
             _options = options;
         }
+
         public async Task ProcessRequest(IDotvvmRequestContext context)
         {
             context.HttpContext.Response.ContentType = "text/javascript";
@@ -35,16 +36,9 @@ namespace DotVVM.PWA.Presenters
                 {
                     Model = templateModel
                 };
-                try
-                {
-                    var transformText = template.TransformText();
-                    await writer.WriteAsync(transformText);
 
-                }
-                catch (Exception e)
-                {
-
-                }
+                var transformText = template.TransformText();
+                await writer.WriteAsync(transformText);
                 await writer.FlushAsync();
             }
         }
@@ -61,6 +55,7 @@ namespace DotVVM.PWA.Presenters
                     StrategyType = StrategyType.StaleWhileRevalidate
                 });
             }
+
             if (cachingStrategies.All(cs => cs.ContentType != ContentType.Styles))
             {
                 cachingStrategies.Add(new CachingStrategy()
@@ -70,6 +65,7 @@ namespace DotVVM.PWA.Presenters
                     StrategyType = StrategyType.StaleWhileRevalidate
                 });
             }
+
             if (cachingStrategies.All(cs => cs.ContentType != ContentType.Images))
             {
                 cachingStrategies.Add(new CachingStrategy()
@@ -79,7 +75,9 @@ namespace DotVVM.PWA.Presenters
                     StrategyType = StrategyType.CacheFirst
                 });
             }
-            if (!cachingStrategies.Any(cs => cs.ContentType == ContentType.DotvvmRoute && string.IsNullOrWhiteSpace(cs.RouteName)))
+
+            if (!cachingStrategies.Any(cs =>
+                cs.ContentType == ContentType.DotvvmRoute && string.IsNullOrWhiteSpace(cs.RouteName)))
             {
                 cachingStrategies.Add(new CachingStrategy()
                 {
@@ -107,21 +105,23 @@ namespace DotVVM.PWA.Presenters
             });
 
 
-            return context.Configuration.RouteTable.Select(r =>
-            {
-                var parser = new DotvvmRouteParser(context.Configuration.RouteConstraints);
-
-                var regex = parser.ParseRouteUrl(r.Url, r.DefaultValues).RouteRegex.ToString();
-                regex = regex.Replace("/?$", @"(\?.*?)?/?$");
-                regex = regex.StartsWith("^")
-                    ? $"^{urlPrefix}{regex.Substring(1, regex.Length - 1)}"
-                    : $"^{urlPrefix}{regex}";
-                return new RouteRegex()
+            return context.Configuration.RouteTable
+                .Where(r => r.RouteName != "ServiceWorker" && r.RouteName != "ServiceWorkerConfiguration")
+                .Select(r =>
                 {
-                    RouteName = r.RouteName,
-                    RouteUrlRegex = regex.Replace(@"/", @"\/")
-                };
-            }).ToList();
+                    var parser = new DotvvmRouteParser(context.Configuration.RouteConstraints);
+
+                    var regex = parser.ParseRouteUrl(r.Url, r.DefaultValues).RouteRegex.ToString();
+                    regex = regex.Replace("/?$", @"(\?.*?)?/?$");
+                    regex = regex.StartsWith("^")
+                        ? $"^{urlPrefix}{regex.Substring(1, regex.Length - 1)}"
+                        : $"^{urlPrefix}{regex}";
+                    return new RouteRegex()
+                    {
+                        RouteName = r.RouteName,
+                        RouteUrlRegex = regex.Replace(@"/", @"\/")
+                    };
+                }).ToList();
         }
 
         private static string BuildUrlPrefix(IDotvvmRequestContext context)
