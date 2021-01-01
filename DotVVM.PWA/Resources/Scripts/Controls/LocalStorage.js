@@ -29,14 +29,9 @@
     }
 
     function updateLocalStorage(name, value) {
-        //dotvvm.serialization.serialize(unwrappedValue, { serializeAll: true });
         const unwrappedValue = ko.unwrap(value);
-        if (!dotvvm.serialization.isPrimitive(unwrappedValue)) {
-            const jsonValue = ko.toJSON(unwrappedValue);
-            localStorage.setItem(name, jsonValue);
-        } else {
-            localStorage.setItem(name, unwrappedValue);
-        }
+        const serializedValue = dotvvm.serialization.serialize(unwrappedValue, { serializeAll: true });
+        localStorage.setItem(name, serializedValue);
     }
 
     return {
