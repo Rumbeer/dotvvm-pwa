@@ -1,8 +1,18 @@
 ﻿@viewModel Chat.Web.ViewModels.DashboardViewModel, Chat.Web
 @masterPage Views/MasterPage.dotmaster
 
+@import ChatContactDTO = Chat.Common.DTOs.ChatContactDTO
+@import Collections = System.Collections.Generic
+
+@service chatContactsService = Chat.Web.Services.ChatContactsService
+
 <dot:Content ContentPlaceHolderID="MainContent">
-    <dot:Repeater DataSource="{value: Contacts}">
+    <dot:Mediator GroupName="{value: Id}"
+                  MethodName="ChatMessageAdded"
+                  Command="{staticCommand: Contacts = chatContactsService.GetChatContactsAsync(Id, NameFilter).Result;
+                                           _localStorage.Set<Collections.List<ChatContactDTO>>("Contacts_" + Id + "", Contacts)}"
+                  PostBack.Concurrency="Queue" />
+    <dot:Repeater class="contacts__container" DataSource="{value: Contacts}">
         <ItemTemplate>
             <dot:RouteLink class="contact__link"
                            RouteName="Chat"
@@ -31,6 +41,7 @@
             <dot:Button class="form--button" Click="{command: FindAllUsers}" Text="Hledat" />
         </div>
     </div>
-
+    <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set<Collections.List<ChatContactDTO>>("Chat_" + Id + "", Contacts)}"
+                        OfflinePageLoad="{staticCommand: Contacts = _localStorage.Get<Collections.List<ChatContactDTO>>("Chat_" + Id + "")}" />
 </dot:Content>
 

@@ -6,13 +6,12 @@
 @import ChatMemberType = Chat.Common.Enums.ChatMemberType
 
 @service chatMessageService = Chat.Web.Services.ChatMessageService
+
 <dot:Content ContentPlaceHolderID="MainContent">
-    <%--<pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set("messages", Messages)}"
-                        OfflinePageLoad="{staticCommand: Messages = _localStorage.Get<Collections.List<ChatMessageDTO>>("messages")}" />--%>
     <dot:Mediator GroupName="{value: Id + "_" + ChatMemberUserId}"
                   MethodName="ChatMessageAdded"
                   Command="{staticCommand: Messages = chatMessageService.GetChatMessagesAsync(Id, ChatMemberUserId).Result;
-                                           _localStorage.Set<Collections.List<ChatMessageDTO>>(Id + "_" + ChatMemberUserId, Messages)}"
+                                           _localStorage.Set<Collections.List<ChatMessageDTO>>("Chat_" + Id + "_" + ChatMemberUserId + "", Messages)}"
                   PostBack.Concurrency="Queue" />
     <dot:Repeater DataSource="{value: Messages}"
                   class="message__container">
@@ -31,43 +30,7 @@
 
     </div>
 
-    <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set("text", TestText)}"
-                        OfflinePageLoad="{staticCommand: Text = _localStorage.Get<string>("text")}" />
-    <%--{{value: TestText}}
-<div>
-    <dot:Button Click="{command: Change()}" Text="save text binding" />
-    <dot:Button Click="{staticCommand: TestText = "Changed"}" Text="save text binding" />
-    <dot:Button Click="{staticCommand: _localStorage.Set("text", TestText)}" Text="save text binding" />
-    <dot:Button Click="{staticCommand: _localStorage.Set("text", "test text")}" Text="save text" />
-    <dot:Button Click="{staticCommand: _localStorage.Set("number", TestNumber)}" Text="save number binding" />
-    <dot:Button Click="{staticCommand: _localStorage.Set("number", 1)}" Text="save number" />
-    <dot:Button Click="{staticCommand: _localStorage.Set<Model>("model", null)}" Text="save null" />
-    <dot:Button Click="{staticCommand: _localStorage.Set("model", TestModel)}" Text="save model binding" />
-    <dot:Button Click="{staticCommand: Text = _localStorage.Get<string>("text")}" Text="load text" />
-    <dot:Button Click="{staticCommand: Model = _localStorage.Get<Model>("model")}" Text="load model" />
-    <dot:Button Click="{staticCommand: Number = _localStorage.Get<int>("number")}" Text="load number" />
-</div>
-    <div>
-        Model:
-        <br>
-        {{value: Model.Text}}
-        <dot:Repeater DataSource="{value: Model.Texts}">
-            <ItemTemplate>
-                {{value: _this}}
-            </ItemTemplate>
-        </dot:Repeater>
-    </div>
-    <hr>
-    <div>
-        Text:
-        <br>
-        {{value: Text}}
-    </div>
-    <hr>
-    <div>
-        Number:
-        <br>
-        {{value: Number}}
-    </div>--%>
+    <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set<Collections.List<ChatMessageDTO>>("Chat_" + Id + "_" + ChatMemberUserId + "", Messages)}"
+                        OfflinePageLoad="{staticCommand: Messages = _localStorage.Get<Collections.List<ChatMessageDTO>>("Chat_" + Id + "_" + ChatMemberUserId + "")}" />
 </dot:Content>
 

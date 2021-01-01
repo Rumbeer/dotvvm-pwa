@@ -87,19 +87,9 @@ namespace Chat.Web
                     },
                     new CachingStrategy()
                     {
-                        CacheName = "test",
+                        CacheName = "custom-dotvvm-route",
                         ContentType = ContentType.DotvvmRoute,
                         RouteName = "Authentication_Register",
-                        StrategyType = StrategyType.CacheFirst,
-                        ExpirationPlugin = new ExpirationPlugin()
-                        {
-                            MaxAgeSeconds = 60*60*24*30
-                        }
-                    },
-                    new CachingStrategy()
-                    {
-                        CacheName = "custom-scripts",
-                        ContentType = ContentType.Scripts,
                         StrategyType = StrategyType.StaleWhileRevalidate
                     }
                 };

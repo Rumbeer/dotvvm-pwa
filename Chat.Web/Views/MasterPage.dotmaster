@@ -30,7 +30,7 @@
 				</NotAuthenticatedTemplate>
 			</dot:AuthenticatedView>
 		</div>
-		<pwa:OfflineAlert Text="Výpadek připojení k internetu" />
+		<pwa:OfflineAlert class="offline-alert" Text="Výpadek připojení k internetu" />
 
 		<dot:ContentPlaceHolder ID="MainContent" />
 	</div>
