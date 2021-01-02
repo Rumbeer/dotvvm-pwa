@@ -16,9 +16,6 @@
     <None Remove="Resources\**" />
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="wwwroot\Resources\Scripts\chat.js" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="dotvvm_serialized_config.json.tmp" />
   </ItemGroup>
   <ItemGroup>
@@ -43,7 +40,6 @@
     <Folder Include="wwwroot\Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="wwwroot\Resources\Scripts\chat.js" />
     <None Include="wwwroot\ServiceWorker.js" />
   </ItemGroup>
 </Project>
