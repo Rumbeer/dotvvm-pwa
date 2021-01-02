@@ -91,7 +91,7 @@ namespace Chat.Web
                     {
                         CacheName = "custom-dotvvm-route",
                         ContentType = ContentType.DotvvmRoute,
-                        RouteName = "Authentication_Register",
+                        RouteName = "Welcome",
                         StrategyType = StrategyType.StaleWhileRevalidate
                     }
                 };

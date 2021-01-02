@@ -1,0 +1,17 @@
+﻿@viewModel Chat.Web.ViewModels.WelcomeViewModel, Chat.Web
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div class="welcome-container">
+        <h1 class="welcome-heading">
+            Vítejte v aplikaci Chat!
+        </h1>
+        <img class="welcome-image" src='~/Resources/Images/favicons/favicon-512x512.png' />
+        <div class="welcome-text">
+            Tato aplikace je určená pro testování a demonstraci funkcí knihovny DotVVM.PWA.
+        </div>
+    </div>
+
+
+</dot:Content>
+

@@ -43,7 +43,8 @@ h1 {
 .page-box {
     max-width: 40rem;
     justify-self: center;
-    width: 100%;
+    width: 80%;
+    padding: 0 10%;
     grid-area: content;
     display: inline-block;
     margin: 30px;
@@ -394,4 +395,37 @@ textarea.page-input {
 
 .reload-link:hover {
     color: #004890;
+}
+
+.welcome-heading {
+    color: #004890;
+    font-size: 1.8rem;
+    text-align: center;
+    background-color: #aad4ff;
+    padding: 2rem;
+    grid-area: heading;
+}
+
+.welcome-text {
+    margin: 0 1.5rem;
+    align-self: center;
+    grid-area: description;
+    padding: 0 0 0 1rem;
+    border-left: #3176bb;
+    border-left-style: solid;
+    max-width: 450px;
+    justify-self: center;
+}
+
+.welcome-image {
+    justify-self: center;
+    grid-area: image;
+    max-width: 200px;
+}
+
+.welcome-container {
+    display: grid;
+    grid-row-gap: 0.5rem;
+    grid-auto-rows: auto auto auto;
+    grid-template-areas: 'heading' 'image' 'description';
 }

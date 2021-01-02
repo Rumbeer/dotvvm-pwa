@@ -22,6 +22,10 @@
 						<AuthenticatedTemplate>
 							<dot:RouteLink Text="Kontakty" RouteName="Dashboard" class="page-button-text" />
 						</AuthenticatedTemplate>
+						<NotAuthenticatedTemplate>
+							<dot:RouteLink IncludeInPage="{value: CurrentRoute != "Welcome"}" Text="Chat" RouteName="Welcome" class="page-button-text" />
+							<dot:RouteLink IncludeInPage="{value: CurrentRoute == "Welcome"}" Text="Registrace" RouteName="Authentication_SignIn" class="page-button-text" />
+						</NotAuthenticatedTemplate>
 					</dot:AuthenticatedView>
 				</span>
 			</span>
@@ -32,7 +36,7 @@
 				</AuthenticatedTemplate>
 				<NotAuthenticatedTemplate>
 					<dot:RouteLink IncludeInPage="{value: CurrentRoute == "Authentication_SignIn"}" Text="Registrace" RouteName="Authentication_Register" class="page-button-text" />
-					<dot:RouteLink IncludeInPage="{value: CurrentRoute == "Authentication_Register"}" Text="Přihlášení" RouteName="Authentication_SignIn" class="page-button-text" />
+					<dot:RouteLink IncludeInPage="{value: CurrentRoute != "Authentication_SignIn"}" Text="Přihlášení" RouteName="Authentication_SignIn" class="page-button-text" />
 				</NotAuthenticatedTemplate>
 			</dot:AuthenticatedView>
 		</div>

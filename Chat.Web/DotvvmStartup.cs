@@ -21,7 +21,8 @@ namespace Chat.Web
 
         private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
         {
-            config.RouteTable.Add("Dashboard", "", "Views/Dashboard.dothtml");
+            config.RouteTable.Add("Welcome", "", "Views/Welcome.dothtml");
+            config.RouteTable.Add("Dashboard", "dashboard", "Views/Dashboard.dothtml");
             config.RouteTable.Add("Authentication_SignIn", "authentication/signin",
                 "Views/Authentication/SignIn.dothtml");
             config.RouteTable.Add("Authentication_Register", "authentication/register",
