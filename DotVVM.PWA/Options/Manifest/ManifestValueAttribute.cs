@@ -13,14 +13,5 @@ namespace DotVVM.PWA.Options.Manifest
         }
 
         public string ManifestValue { get; private set; }
-
-        public static string ToManifestValue(Enum value)
-        {
-            var type = value.GetType();
-            var fieldInfo = type.GetField(value.ToString());
-
-            var attributes = fieldInfo.GetCustomAttributes(typeof(ManifestValueAttribute), false) as ManifestValueAttribute[];
-            return attributes?.Any() == true ? attributes[0].ManifestValue : value.ToString();
-        }
     }
 }

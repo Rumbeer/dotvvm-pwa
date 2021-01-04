@@ -1,7 +1,7 @@
 ﻿
 dotvvm.events.init.subscribe(async () => {
     const hub = new signalR.HubConnectionBuilder().withAutomaticReconnect().withUrl("/chat-hub").build();
-    hub.on("addChatMessage", question => {
+    hub.on("addChatMessage", () => {
         var reloadButton = document.getElementById("chat-reload-btn");
         reloadButton.click();
     });
