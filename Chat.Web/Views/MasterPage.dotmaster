@@ -8,7 +8,7 @@
 	<title>Chat</title>
 	<dot:RequiredResource Name="Styles" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<pwa:RegisterManifest AppleTouchIconPath="/Resources/Images/favicons/apple-touch-icon.png" />
+	<pwa:RegisterManifest AppleTouchIconPath="/Resources/Images/favicons/apple-touch-icon.png"/>
 </head>
 <body>
 	<noscript>Pro použití této stránky je nutné použití Javascriptu.</noscript>

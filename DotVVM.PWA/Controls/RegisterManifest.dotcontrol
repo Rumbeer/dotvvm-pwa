@@ -2,20 +2,24 @@
 @baseType DotVVM.PWA.Controls.RegisterManifest, DotVVM.PWA
 @noWrapperTag
 
-<meta name="apple-mobile-web-app-capable" 
-      IncludeInPage="{controlProperty:  AppleMobileWebAppCapable != null}" 
+<meta name="apple-mobile-web-app-capable"
+      IncludeInPage="{controlProperty:  AppleMobileWebAppCapable != null}"
       content="{controlProperty: AppleMobileWebAppCapable == true ? "yes" : "no" }" />
-<meta name="apple-mobile-web-app-status-bar-style" 
-      IncludeInPage="{controlProperty:  AppleStatusBarColor != null}" 
+<meta name="apple-mobile-web-app-status-bar-style"
+      IncludeInPage="{controlProperty:  AppleStatusBarColor != null}"
       content="{controlProperty: AppleStatusBarColor}" />
 <meta name="apple-mobile-web-app-title"
-      IncludeInPage="{controlProperty:  AppleWebAppTitle != null}" 
+      IncludeInPage="{controlProperty:  AppleWebAppTitle != null}"
       content="{controlProperty: AppleWebAppTitle}" />
-<meta name="theme-color" 
-      IncludeInPage="{controlProperty:  ThemeColor != null}"  
+<meta name="theme-color"
+      IncludeInPage="{controlProperty:  ThemeColor != null}"
       content="{controlProperty: ThemeColor}" />
-<link rel="apple-touch-icon" 
-      IncludeInPage="{controlProperty:  AppleTouchIconPath != null}" 
+<meta name="format-detection" 
+      IncludeInPage="{controlProperty: DisablePhoneNumberFormatDetection}"
+      content="telephone=no"/>
+
+<link rel="apple-touch-icon"
+      IncludeInPage="{controlProperty:  AppleTouchIconPath != null}"
       href="{controlProperty: AppleTouchIconPath}" />
 
 <!-- Manifest file for PWA-->

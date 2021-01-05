@@ -63,6 +63,7 @@ namespace DotVVM.PWA.Controls
         /// <summary>
         /// Sets the value of meta tag with name "theme-color". ThemeColor value of manifest will be used if no other value is specified.
         /// </summary>
+        [MarkupOptions(AllowBinding = false)]
         public string ThemeColor
         {
             get { return (string)GetValue(ThemeColorProperty); }
@@ -74,6 +75,7 @@ namespace DotVVM.PWA.Controls
         /// <summary>
         /// If content is set to yes, the web application runs in full-screen mode; otherwise, it does not. Display value of manifest will be used if no other value is specified.
         /// </summary>
+        [MarkupOptions(AllowBinding = false)]
         public bool? AppleMobileWebAppCapable
         {
             get { return (bool?)GetValue(AppleMobileWebAppCapableProperty); }
@@ -81,6 +83,18 @@ namespace DotVVM.PWA.Controls
         }
         public static readonly DotvvmProperty AppleMobileWebAppCapableProperty
             = DotvvmProperty.Register<bool?, RegisterManifest>(c => c.AppleMobileWebAppCapable, null);
+
+        /// <summary>
+        /// Enables or disables automatic detection of possible phone numbers in a webpage in Safari on iOS.
+        /// </summary>
+        [MarkupOptions(AllowBinding = false)]
+        public bool DisablePhoneNumberFormatDetection
+        {
+            get { return (bool)GetValue(DisablePhoneNumberFormatDetectionProperty); }
+            set { SetValue(DisablePhoneNumberFormatDetectionProperty, value); }
+        }
+        public static readonly DotvvmProperty DisablePhoneNumberFormatDetectionProperty
+            = DotvvmProperty.Register<bool, RegisterManifest>(c => c.DisablePhoneNumberFormatDetection, false);
 
 
         protected override void OnInit(IDotvvmRequestContext context)
