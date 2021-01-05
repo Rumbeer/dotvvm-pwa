@@ -348,6 +348,7 @@ textarea.page-input {
 
 .contact__content--image {
     grid-area: img;
+    max-width: 80px;
 }
 
 .contact__content--title {

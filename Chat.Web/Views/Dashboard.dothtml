@@ -20,7 +20,7 @@
                            RouteName="Chat"
                            Param-UserId="{value: UserId}">
                 <div class="contact__container">
-                    <img class="contact__content--image" src='https://placehold.it/80x80' />
+                    <img class="contact__content--image" src="/Resources/Images/profile_picture.png" />
                     <span class="contact__content--title">
                         {{value: FirstName}}
                         {{value: LastNameName}}
