@@ -374,8 +374,8 @@ textarea.page-input {
 .page-container {
     display: grid;
     height: 100%;
-    grid-template-rows: max-content max-content auto max-content;
-    grid-template-areas: 'top' 'offline-alert' 'content' 'form';
+    grid-template-rows: max-content max-content max-content auto max-content;
+    grid-template-areas: 'top' 'offline-alert' 'reload-link' 'content' 'form';
 }
 
 .form-container {
@@ -389,6 +389,7 @@ textarea.page-input {
     text-align: center;
     color: inherit;
     text-decoration: inherit;
+    grid-area: reload-link;
     margin: 0.5rem 0;
     color: #3176bb;
 }

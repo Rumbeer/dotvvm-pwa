@@ -20,16 +20,16 @@ namespace Chat.Web.Services
         public static async Task AddChatMessageAsync(this IHubContext<ChatHub> chatHub, ChatMessageDetailDTO chatMessage)
         {
             await chatHub.Clients
-                .Group($"Chat_{chatMessage.SenderId}_{chatMessage.ReceiverId}")
+                .Group($"{chatMessage.SenderId}_{chatMessage.ReceiverId}")
                 .SendAsync("addChatMessage", CancellationToken.None);
             await chatHub.Clients
-                .Group($"Chat_{chatMessage.ReceiverId}_{chatMessage.SenderId}")
+                .Group($"{chatMessage.ReceiverId}_{chatMessage.SenderId}")
                 .SendAsync("addChatMessage", CancellationToken.None);
             await chatHub.Clients
-                .Group($"Chat_{chatMessage.SenderId}")
+                .Group($"{chatMessage.SenderId}")
                 .SendAsync("addChatMessage", CancellationToken.None);
             await chatHub.Clients
-                .Group($"Chat_{chatMessage.ReceiverId}")
+                .Group($"{chatMessage.ReceiverId}")
                 .SendAsync("addChatMessage", CancellationToken.None);
         }
     }

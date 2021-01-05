@@ -13,7 +13,7 @@
                     class="reload-link"
                     Text="Načíst zprávy"
                     Click="{staticCommand: Messages = chatMessageService.GetChatMessagesAsync(Id, ChatMemberUserId).Result;
-                                       _localStorage.Set<Collections.List<ChatMessageDTO>>("Chat_" + Id + "_" + ChatMemberUserId + "", Messages)}" />
+                                       _localStorage.Set<Collections.List<ChatMessageDTO>>("Chat_" + Id + "_" + ChatMemberUserId, Messages)}" />
     <dot:Repeater DataSource="{value: Messages}"
                   class="message__container">
         <ItemTemplate>
@@ -32,6 +32,6 @@
     </div>
 
     <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set<Collections.List<ChatMessageDTO>>(("Chat_" + Id + "_" + ChatMemberUserId), Messages)}"
-                        OfflinePageLoad="{staticCommand: Messages = _localStorage.Get<Collections.List<ChatMessageDTO>>("Chat_" + Id + "_" + ChatMemberUserId + "")}" />
+                        OfflinePageLoad="{staticCommand: Messages = _localStorage.Get<Collections.List<ChatMessageDTO>>("Chat_" + Id + "_" + ChatMemberUserId)}" />
 </dot:Content>
 
