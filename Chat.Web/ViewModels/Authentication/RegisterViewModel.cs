@@ -49,7 +49,7 @@ namespace Chat.Web.ViewModels.Authentication
                 Context.FailOnInvalidModelState();
             }
 
-            Context.RedirectToRoute("Default", allowSpaRedirect: false);
+            Context.RedirectToRoute("Dashboard", allowSpaRedirect: false);
         }
         
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
