@@ -91,28 +91,5 @@ namespace Chat.DAL.Repositories
                 })
                 .ToList();
         }
-
-        private class ChatMemberUserIdEqualityComparer : EqualityComparer<ChatMember>
-        {
-            public override bool Equals(ChatMember x, ChatMember y)
-            {
-                if (x == null && y == null)
-                {
-                    return true;
-                }
-
-                if (x == null || y == null)
-                {
-                    return false;
-                }
-
-                return x.UserId == y.UserId;
-            }
-
-            public override int GetHashCode(ChatMember obj)
-            {
-                return obj.GetHashCode();
-            }
-        }
     }
 }

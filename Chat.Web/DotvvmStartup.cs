@@ -38,13 +38,6 @@ namespace Chat.Web
 
         private void ConfigureResources(DotvvmConfiguration config, string applicationPath)
         {
-            config.Resources.Register("main",
-                new ScriptResource
-                {
-                    Location = new UrlResourceLocation("~/Scripts/main.js"),
-                    Dependencies = new[] {"dotvvm"},
-                    RenderPosition = ResourceRenderPosition.Body
-                });
             config.Resources.Register("signalr",
                 new ScriptResource
                 {
