@@ -70,6 +70,7 @@ namespace DotVVM.PWA
             config.Markup.AddCodeControls("pwa", typeof(RegisterServiceWorker));
             config.Markup.AddCodeControls("pwa", typeof(OfflineHandler));
             config.Markup.AddCodeControls("pwa", typeof(OfflineAlert));
+            config.Markup.AddMarkupControl("pwa", "RegisterManifest", "embedded://DotVVM.PWA/Controls/RegisterManifest.dotcontrol");
 
             config.Markup.DefaultExtensionParameters.Add(
                 new LocalStorageExtensionParameter());

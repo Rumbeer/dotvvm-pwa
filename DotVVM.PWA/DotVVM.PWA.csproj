@@ -5,11 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Controls\RegisterManifest.dotcontrol" />
     <None Remove="Resources\Scripts\Controls\LocalStorage.js" />
     <None Remove="Resources\Scripts\Controls\OfflineAlert.js" />
     <None Remove="Resources\Scripts\Controls\OfflineHandler.js" />
     <None Remove="Resources\Scripts\Controls\RegisterServiceWorker.js" />
     <None Remove="Resources\Scripts\ServiceWorker.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\RegisterManifest.dotcontrol" />
   </ItemGroup>
 
   <ItemGroup>

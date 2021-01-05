@@ -16,6 +16,7 @@ namespace DotVVM.PWA.Controls
         public static readonly DotvvmProperty OnlinePageLoadProperty
             = DotvvmProperty.Register<Command, OfflineHandler>(c => c.OnlinePageLoad, null);
 
+        [MarkupOptions(Required = true)]
         public Command OfflinePageLoad
         {
             get { return (Command)GetValue(OfflinePageLoadProperty); }
