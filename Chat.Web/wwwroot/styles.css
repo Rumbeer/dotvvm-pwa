@@ -418,6 +418,15 @@ textarea.page-input {
     justify-self: center;
 }
 
+.welcome-users {
+    margin: 2rem 1.5rem;
+    align-self: center;
+    grid-area: users;
+    max-width: 450px;
+    justify-self: center;
+}
+
+
 .welcome-image {
     justify-self: center;
     grid-area: image;
@@ -428,5 +437,5 @@ textarea.page-input {
     display: grid;
     grid-row-gap: 0.5rem;
     grid-auto-rows: auto auto auto;
-    grid-template-areas: 'heading' 'image' 'description';
+    grid-template-areas: 'heading' 'image' 'description' 'users';
 }

@@ -10,6 +10,17 @@
         <div class="welcome-text">
             Tato aplikace je určená pro testování a demonstraci funkcí knihovny DotVVM.PWA.
         </div>
+        <div class="welcome-users">
+            V aplikaci jsou připravení testovací uživatelé, kteří mají heslo: "heslo". 
+            <ul>
+                <li>Josef Košta, Username: josef</li>
+                <li>Pavel Novák, Username: pavel</li>
+                <li>František Svoboda, Username: franta</li>
+                <li>Jiří Dvořák, Username: jirka</li>
+                <li>Jarmila Veselá, Username: jarmila</li>
+                <li>Jana Krejčí, Username: jana</li>
+            </ul>
+        </div>
     </div>
 
 
