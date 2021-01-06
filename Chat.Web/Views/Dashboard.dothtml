@@ -12,7 +12,7 @@
                     class="reload-link"
                     Text="Načíst kontakty"
                     Click="{staticCommand: _root.Contacts = chatContactsService.GetChatContactsAsync(_root.Id, _root.NameFilter).Result;
-                                                   _localStorage.Set<Collections.List<ChatContactDTO>>("Contacts_" + _root.Id, _root.Contacts)}" />
+                                           _localStorage.Set<Collections.List<ChatContactDTO>>("Contacts_" + _root.Id, _root.Contacts)}" />
 
     <dot:Repeater class="contacts__container" DataSource="{value: Contacts}">
         <ItemTemplate>
@@ -43,7 +43,7 @@
             <dot:Button class="form--button" Click="{command: FindAllUsers}" Text="Hledat" />
         </div>
     </div>
-    <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set<Collections.List<ChatContactDTO>>("Chat_" + Id, Contacts)}"
-                        OfflinePageLoad="{staticCommand: Contacts = _localStorage.Get<Collections.List<ChatContactDTO>>("Chat_" + Id)}" />
+    <pwa:OfflineHandler OnlinePageLoad="{staticCommand: _localStorage.Set<Collections.List<ChatContactDTO>>("Contacts_" + Id, Contacts)}"
+                        OfflinePageLoad="{staticCommand: Contacts = _localStorage.Get<Collections.List<ChatContactDTO>>("Contacts_" + Id)}" />
 </dot:Content>
 
